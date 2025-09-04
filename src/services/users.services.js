@@ -67,7 +67,7 @@ class UserServices {
     if (rol) user.rol = rol;
     if (active !== undefined) user.active = !!active;
 
-    await Users.save({ usuarioId });
+    await user.save({ usuarioId });
     return user;
   }
 
