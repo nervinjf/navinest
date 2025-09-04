@@ -100,6 +100,7 @@ const updateUserRoleAndStatus = async (req, res, next) => {
     const { id } = req.params;
     const { rol, active } = req.body;
 
+      console.log(req.user)
       if (req.user?.rol !== "admin") {
       return res.status(403).json({ message: "No autorizado" });
     }
