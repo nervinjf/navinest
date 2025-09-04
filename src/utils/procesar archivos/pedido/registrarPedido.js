@@ -4,6 +4,7 @@ const path = require("path");
 const { Pedidos, DetallePedidos, Clientes, Productos } = require("../../../models");
 const { Op, fn, col, literal } = require("sequelize");
 const { mergePDFBuffers } = require("../../function/pdf");
+const { uploadBufferToBlob } = require("../../../middlewares/azureBlob");
 
 // --- utilidades -----------------------------
 // Quita coma final y elimina "C.A"/"C.A."/ "CA" o "S.A"/"S.A."/ "SA" SOLO si están al final
@@ -129,10 +130,10 @@ async function registrarPedido({ extractedData, productosNoEncontrados, buffer, 
   await fsp.writeFile(rutaMapa, JSON.stringify(mapa, null, 2), "utf-8");
 
   // Merge: COMBINADO previo (si existe) + nuevas fuentes
-  const rutaCombinado = path.join(carpetaPDF, `COMBINADO_${nroFacturaFS}.pdf`);
+  const rutaCombinadoPath = path.join(carpetaPDF, `COMBINADO_${nroFacturaFS}.pdf`);
   const buffersParaMerge = [];
-  if (fs.existsSync(rutaCombinado)) {
-    buffersParaMerge.push(await fsp.readFile(rutaCombinado));
+  if (fs.existsSync(rutaCombinadoPath)) {
+    buffersParaMerge.push(await fsp.readFile(rutaCombinadoPath));
   }
   for (const p of mapa.fuentes) {
     buffersParaMerge.push(await fsp.readFile(p));
@@ -140,10 +141,25 @@ async function registrarPedido({ extractedData, productosNoEncontrados, buffer, 
 
   const combinadoBuffer = await mergePDFBuffers(buffersParaMerge);
 
-  // Escritura atómica del COMBINADO
-  const rutaTmp = rutaCombinado + ".tmp";
-  await fsp.writeFile(rutaTmp, combinadoBuffer);
-  await fsp.rename(rutaTmp, rutaCombinado);
+  const blobName = `${anio}/${mes}/${nroFacturaFS}_${fechaStamp}.pdf`;
+
+  let rutaCombinado; // 👈 salida final: URL del blob o path local si cae en fallback
+  try {
+    const info = await uploadBufferToBlob({
+      containerName: "pdf",
+      blobName,
+      buffer: combinadoBuffer,
+      contentType: "application/pdf",
+    });
+    rutaCombinado = info.url;         // URL en Blob
+    console.log("☁️ COMBINADO subido a Blob:", rutaCombinado);
+  } catch (e) {
+    console.error("❌ Falló subir a Blob. Fallback a FS:", e.message);
+    const rutaTmp = rutaCombinadoPath + ".tmp";
+    await fsp.writeFile(rutaTmp, combinadoBuffer);
+    await fsp.rename(rutaTmp, rutaCombinadoPath);
+    rutaCombinado = rutaCombinadoPath; // path local como fallback
+  }
 
   // Borrar originales y limpiar mapa
   try {
