@@ -1,4 +1,4 @@
-const { userRegister, getAllUsers, verifyOTP } = require("./users.controllers");
+const { userRegister, getAllUsers, verifyOTP, updateUserRoleAndStatus } = require("./users.controllers");
 const { userLogin, resetEmail, forgotPassword, validateTokenReset } = require("./auth.controllers");
 const { CreateBulk, editBulk, ListProducts, createProduct, updateProduct, searchProduct } = require("./productos.controllers");
 const { CreateBulkPClientes, editBulkPClientes, ListProductsClientes, createProductClientes, updateProductClientes } = require("./productosClientes.controllers");
@@ -10,6 +10,7 @@ const {  list, create, update, remove, setActive, check } = require("./email-all
 
 module.exports = {
     userRegister,
+    updateUserRoleAndStatus,
     getAllUsers,
     userLogin,
     validateTokenReset,
