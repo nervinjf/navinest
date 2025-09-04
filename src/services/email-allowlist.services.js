@@ -1,6 +1,6 @@
 // src/services/allowlist.service.js
 const { Op } = require("sequelize");
-const EmailAllowlist = require("../models");
+const { EmailAllowlist } = require("../models");
 
 const norm = (v) => String(v || "").trim().toLowerCase();
 const domainOf = (email) =>
