@@ -31,9 +31,10 @@ router.get("/failed-pdfs", async (req, res, next) => {
     // 2) procesados con problema (líneas fallidas o sin pedido)
     const condProcessedWithIssue = {
       status: { [Op.in]: ["processed", "partial"] },
+      hasFailLine: true,
       [Op.or]: [
-        { hasFailLine: true },
-        { pedidoId: null }
+        { hasOkLine: { [Op.eq]: false } },
+        { hasOkLine: { [Op.is]: null } },
       ],
     };
 
@@ -91,3 +92,4 @@ router.get("/failed-pdfs", async (req, res, next) => {
 });
 
 module.exports = router;
+
