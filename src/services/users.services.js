@@ -60,6 +60,17 @@ class UserServices {
 
     };
 
+    static async updateRoleAndStatus(id, { rol, active }, usuarioId) {
+    const user = await User.findByPk(id);
+    if (!user) throw new Error("Usuario no encontrado");
+
+    if (rol) user.rol = rol;
+    if (active !== undefined) user.active = !!active;
+
+    await user.save({ usuarioId });
+    return user;
+  }
+
 }
 
 module.exports = UserServices;
