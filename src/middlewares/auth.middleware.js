@@ -2,23 +2,27 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const authenticate = (req, res, next) => {
-  // header authorization
-  // Bearer lñsdhfipuryhtkdvm,cxnbvkjhyguireyhgjkdh
-  const bearerToken = req.headers.authorization;
-  if (bearerToken) {
-    const token = bearerToken.split("Bearer ")[1];
-    console.log(token);
-    try {
-      const decoded = jwt.verify(token, process.env.SECRET, "HS512");
-      req.userId = decoded.id;
-      next();
-    } catch (error) {
-      next({
-        status: 400,
-        errorContent: error,
-        message: "Invalid Token",
-      });
-    }
+  const bearerToken = req.headers.authorization; // "Bearer <token>"
+
+  if (!bearerToken) {
+    return res.status(401).json({ message: "Falta token de autorización" });
+  }
+
+  const token = bearerToken.replace("Bearer ", "").trim();
+
+  try {
+    const decoded = jwt.verify(token, process.env.SECRET, {
+      algorithms: ["HS512"], // 👈 aseguras que coincida con el que usaste al firmar
+    });
+
+    // Inyectar en req
+    req.user = decoded;   // ahora tendrás { id, rol, email, ... }
+    req.userId = decoded.id;
+
+    next();
+  } catch (error) {
+    console.error("❌ Error verificando token:", error.message);
+    return res.status(401).json({ message: "Token inválido o expirado" });
   }
 };
 
