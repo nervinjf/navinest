@@ -1,4 +1,4 @@
-const { Op } = require('sequelize');
+const { Op, fn, col, Sequelize } = require("sequelize");
 const { ProductosClientes, Productos, Auditoria } = require('../models');
 const xlsx = require("xlsx");
 
@@ -129,103 +129,115 @@ class ProductosServices {
         }
     }
 
-    static async listProducts(filtros, page = 1, limit = 8, id) {
+static async listProducts(filtros, page = 1, limit = 8, id) {
+  const { estado, categoria, unidadNegocio, busqueda } = filtros || {};
 
-        const { estado, categoria, unidadNegocio, busqueda } = filtros;
+  const estadoNorm = (estado || "").toString().trim().toLowerCase();
 
-        const estadoNorm = (estado || "").toString().trim().toLowerCase();
+  // Filtros que aplican sobre Productos (include)
+  const includeWhere = {};
+  if (estadoNorm === "activo") {
+    includeWhere.estado_vigente = "activo";
+  } else if (estadoNorm === "inactivo") {
+    includeWhere.estado_vigente = { [Op.ne]: "activo" };
+  }
+  if (unidadNegocio) includeWhere.unidadNegocio = unidadNegocio;
 
-        const includeWhere = {};
-        if (estadoNorm === "activo") {
-            includeWhere.estado_vigente = "activo";
-        } else if (estadoNorm === "inactivo") {
-            includeWhere.estado_vigente = { [Op.ne]: "activo" };
-        }
-        if (categoria) includeWhere.categoria = categoria;
-        if (unidadNegocio) includeWhere.unidadNegocio = unidadNegocio;
-        // if (busqueda) {
-        //     includeWhere[Op.or] = [
-        //         { producto: { [Op.like]: `%${busqueda}%` } },
-        //         { codigoSAP: { [Op.like]: `%${busqueda}%` } }
-        //     ];
-        // }
+  // 👇 categoría se filtra contra producto.categoria
+  if (categoria) includeWhere.categoria = categoria;
 
-        const offset = (page - 1) * limit;
+  const offset = (page - 1) * limit;
 
-        const where = {};
-        if (id) where.clienteId = id;
-        // 🔎 OR global: codigoCliente || producto.producto || producto.codigoSAP
-        if (busqueda) {
-            const pattern = `%${busqueda}%`;
-            where[Op.or] = [
-                { codigoCliente: { [Op.like]: pattern } },
-                { '$producto.producto$': { [Op.like]: pattern } },
-                { '$producto.codigoSAP$': { [Op.like]: pattern } },
-            ];
-        }
+  // WHERE raíz (ProductosClientes)
+  const where = {};
+  if (id) where.ClienteId = id;
 
+  // 🔎 OR global: codigoCliente || producto.producto || producto.codigoSAP
+  if (busqueda) {
+    const pattern = `%${busqueda}%`;
+    where[Op.or] = [
+      { codigoCliente: { [Op.like]: pattern } },
+      { '$producto.producto$':  { [Op.like]: pattern } },
+      { '$producto.codigoSAP$': { [Op.like]: pattern } },
+    ];
+  }
 
+  try {
+    // ============ Query principal (paginada) ============
+    const { count, rows } = await ProductosClientes.findAndCountAll({
+      where,
+      include: [{
+        model: Productos,
+        as: 'producto',
+        attributes: ['producto', 'codigoSAP', 'categoria', 'SalesOrg', 'estado', 'estado_vigente', 'unidadNegocio'],
+        where: includeWhere,
+        required: true,
+      }],
+      limit,
+      offset,
+      order: [[{ model: Productos, as: 'producto' }, 'producto', 'ASC']],
+      distinct: true,
+      col: 'id',
+      subQuery: false,
+    });
 
-        try {
-            const { count, rows } = await ProductosClientes.findAndCountAll({
-                where,
-                include: [{
-                    model: Productos,
-                    as: 'producto',
-                    attributes: ['producto', 'codigoSAP', 'categoria', 'SalesOrg', 'estado', 'estado_vigente'],
-                    where: includeWhere,
-                    required: true,
-                }],
-                limit,
-                offset,
-                order: [[{ model: Productos, as: 'producto' }, 'producto', 'ASC']],
-                distinct: true,
-                col: 'id',
-                subQuery: false,               // <- hace que $producto.campo$ funcione en WHERE raíz
-                // logging: console.log,       // <- activa para ver el SQL y confirmar filtros
-            });
+    // ============ Resumen activos/inactivos ============
+    const whereTotales = {};
+    if (id) whereTotales.ClienteId = id;
 
-            // Contadores de activos e inactivos (solo con clienteId si existe)
-            const whereTotales = {};
-            if (id) whereTotales.clienteId = id;
+    const totalActivos = await ProductosClientes.count({
+      where: whereTotales,
+      include: [{ model: Productos, as: "producto", where: { estado_vigente: "activo" } }],
+    });
 
-            const totalActivos = await ProductosClientes.count({
-                where: whereTotales,
-                include: [
-                    {
-                        model: Productos,
-                        as: "producto",
-                        where: { estado_vigente: "activo" },
-                    },
-                ],
-            });
+    const totalInactivos = await ProductosClientes.count({
+      where: whereTotales,
+      include: [{ model: Productos, as: "producto", where: { estado_vigente: { [Op.ne]: "activo" } } }],
+    });
 
-            const totalInactivos = await ProductosClientes.count({
-                where: whereTotales,
-                include: [
-                    {
-                        model: Productos,
-                        as: "producto",
-                        where: { estado_vigente: { [Op.ne]: "activo" } },
-                    },
-                ],
-            });
+    // ============ Catálogo de categorías para el <select> ============
+    // Queremos TODAS las categorías disponibles para ese cliente
+    // (respetando filtros de estado y unidadNegocio, pero SIN limitar por paginación ni por la categoría elegida)
+    const categoriasRows = await Productos.findAll({
+      attributes: [[fn('DISTINCT', col('categoria')), 'categoria']],
+      include: [{
+        model: ProductosClientes,
+        as: 'productos_clientes',         // asegúrate que exista la asociación: Productos.hasMany(ProductosClientes, { as: 'productos_clientes', foreignKey: 'productoId' })
+        attributes: [],
+        where: id ? { ClienteId: id } : undefined,
+        required: !!id,
+      }],
+      where: {
+        ...(estadoNorm === "activo"   ? { estado_vigente: "activo" } : {}),
+        ...(estadoNorm === "inactivo" ? { estado_vigente: { [Op.ne]: "activo" } } : {}),
+        ...(unidadNegocio ? { unidadNegocio } : {}),
+      },
+      raw: true,
+    });
 
-            return {
-                total: count,
-                paginas: Math.ceil(count / limit),
-                paginaActual: page,
-                productos: rows,
-                resumen: {
-                    activos: totalActivos,
-                    inactivos: totalInactivos
-                }
-            };
-        } catch (error) {
-            console.log(error)
-            throw error;
-        }
-    }
+    const categorias = categoriasRows
+      .map(r => r.categoria)
+      .filter(Boolean)
+      .sort((a, b) => a.localeCompare(b));
+
+    return {
+      total: count,
+      paginas: Math.ceil(count / limit),
+      paginaActual: page,
+      productos: rows,
+      resumen: {
+        activos: totalActivos,
+        inactivos: totalInactivos,
+      },
+      filtros: {
+        categorias, // 👈 para el <select> de categorías
+      },
+    };
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
 
     static async postOne(data, usuarioId) {
         try {
