@@ -95,8 +95,21 @@ const getAllUsers = async (req, res, next) => {
     }
 }
 
+const updateUserRoleAndStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { rol, active } = req.body;
+
+    const updatedUser = await UserServices.updateRoleAndStatus(id, { rol, active }, req.user?.id);
+    res.json(updatedUser);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
     userRegister,
     getAllUsers,
-    verifyOTP
+    verifyOTP,
+    updateUserRoleAndStatus
 }
