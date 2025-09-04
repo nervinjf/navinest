@@ -278,27 +278,27 @@ async function procesarPDFsDeCorreoConJob({
 
   // Job "global" para este correo/lote
   let job;
-  if (reuseGlobalJob && globalJobId) {
-    // 🔁 Reusar job existente (retry)
-    job = await IngestionJob.findByPk(globalJobId);
-    if (!job) throw new Error(`globalJobId=${globalJobId} no existe`);
-    // refresca métricas mínimas
-    await IngestionJob.update(
-      { pagesDetected: totalPaginas, azureModelId: azureModelId || job.azureModelId },
-      { where: { id: job.id } }
-    );
-  } else {
-    // 🆕 Flujo normal: crear job global nuevo
-    job = await createJob({
-      source: origen || "email",
-      sourceId,
-      clienteId: null,
-      pedidoId: null, // compat: se completa al final con el primer pedido
-      filePath: path.join("emails_procesados", `${sourceId}.zip`),
-      azureModelId,
-      pagesDetected: totalPaginas,
-    });
-  }
+ if ((reuseGlobalJob && globalJobId) || (Array.isArray(jobsSeed) && jobsSeed.length > 0)) {
+   const id = globalJobId || jobsSeed[0];
+   job = await IngestionJob.findByPk(id);
+   if (!job) throw new Error(`globalJobId=${id} no existe`);
+   // Refresca métricas mínimas, sin tocar filePath (mantén el del listener)
+   await IngestionJob.update(
+     { pagesDetected: totalPaginas, azureModelId: azureModelId || job.azureModelId },
+     { where: { id: job.id } }
+   );
+ } else {
+   // Solo si no hay seeds, crea uno nuevo
+   job = await createJob({
+     source: origen || "email",
+     sourceId,
+     clienteId: null,
+     pedidoId: null,
+    filePath: path.join("emails_procesados", `${sourceId}.zip`),
+     azureModelId,
+     pagesDetected: totalPaginas,
+   });
+ }
 
  // Si el listener ya creó 1 job por PDF, guarda hash/size en cada jobSeed
   if (Array.isArray(jobsSeed) && jobsSeed.length === archivos.length) {
