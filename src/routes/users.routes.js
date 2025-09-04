@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { userRegister, getAllUsers, verifyOTP } = require("../controllers");
+const { userRegister, getAllUsers, verifyOTP,updateUserRoleAndStatus } = require("../controllers");
 const { authVerification, requireAdmin } = require("../middlewares/auth.middleware");
 
 
