@@ -283,7 +283,7 @@ router.post(
 
         // 2) Descargar Excel a archivo temporal único
         const base = path.basename(blobName);
-        const tmpName = `E2O TA`;
+        const tmpName = `E2O TA.xlsm`;
         const destFile = path.join(os.tmpdir(), tmpName);
         await downloadBlobToFile(container, blobName, destFile);
 
