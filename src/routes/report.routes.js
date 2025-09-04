@@ -226,7 +226,7 @@ router.get("/overview", async (req, res, next) => {
 
       shareMap.set(cli, (shareMap.get(cli) || 0) + 1);
 
-      const pedidosTop5 = pedidos.slice(0, 5);
+      
 
       return {
         id: p.id,
@@ -244,6 +244,8 @@ router.get("/overview", async (req, res, next) => {
         montoUsd: agg.montoOkUsd + agg.montoFailUsd,
       };
     });
+
+    const pedidosTop5 = pedidos.slice(0, 5);
 
     const clientsShare = Array.from(shareMap.entries()).map(([name, count]) => ({
       name,
