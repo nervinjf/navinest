@@ -399,7 +399,9 @@ function revisarCorreo() {
           sourceId: messageId || asunto,
           azureModelId: process.env.MODEL_ID,
           remitente: remitenteEmailPuro,       // quien recibirá el Excel y/o faltantes
-          jobsSeed: jobsCreados.map(j => j.id) // 👈 IDs para actualizar cada job
+          jobsSeed: jobsCreados.map(j => j.id), // 👈 IDs para actualizar cada job
+          reuseGlobalJob: true,
+          globalJobId: jobsCreados[0]?.id,
         });
         console.log(`✅ Job global OK: ${pdfAdjuntos.length} PDF(s) procesado(s)`);
       } catch (e) {
