@@ -150,7 +150,7 @@ static async listProducts(filtros, page = 1, limit = 8, id) {
 
   // WHERE raíz (ProductosClientes)
   const where = {};
-  if (id) where.ClienteId = id;
+  if (id) where.clienteId = id;
 
   // 🔎 OR global: codigoCliente || producto.producto || producto.codigoSAP
   if (busqueda) {
@@ -183,7 +183,7 @@ static async listProducts(filtros, page = 1, limit = 8, id) {
 
     // ============ Resumen activos/inactivos ============
     const whereTotales = {};
-    if (id) whereTotales.ClienteId = id;
+    if (id) whereTotales.clienteId = id;
 
     const totalActivos = await ProductosClientes.count({
       where: whereTotales,
@@ -204,7 +204,7 @@ static async listProducts(filtros, page = 1, limit = 8, id) {
         model: ProductosClientes,
         as: 'productos_clientes',         // asegúrate que exista la asociación: Productos.hasMany(ProductosClientes, { as: 'productos_clientes', foreignKey: 'productoId' })
         attributes: [],
-        where: id ? { ClienteId: id } : undefined,
+        where: id ? { clienteId: id } : undefined,
         required: !!id,
       }],
       where: {
