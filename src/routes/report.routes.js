@@ -226,6 +226,8 @@ router.get("/overview", async (req, res, next) => {
 
       shareMap.set(cli, (shareMap.get(cli) || 0) + 1);
 
+      const pedidosTop5 = pedidos.slice(0, 5);
+
       return {
         id: p.id,
         fecha: p.fecha,
@@ -285,7 +287,7 @@ router.get("/overview", async (req, res, next) => {
       // ===== Pedidos + KPIs desde detalle_pedidos =====
       orders: {
         total: pedidosCount,
-        rows: pedidos,
+        rows: pedidosTop5,
         // $ totales por estado de línea
         usd_ok_total: usdOkTotal,
         usd_fail_total: usdFailTotal,
