@@ -153,7 +153,7 @@ class ProductosServices {
         const offset = (page - 1) * limit;
 
         const where = {};
-        if (id) where.ClienteId = id;
+        if (id) where.clienteId = id;
         // 🔎 OR global: codigoCliente || producto.producto || producto.codigoSAP
         if (busqueda) {
             const pattern = `%${busqueda}%`;
@@ -185,9 +185,9 @@ class ProductosServices {
                 // logging: console.log,       // <- activa para ver el SQL y confirmar filtros
             });
 
-            // Contadores de activos e inactivos (solo con ClienteId si existe)
+            // Contadores de activos e inactivos (solo con clienteId si existe)
             const whereTotales = {};
-            if (id) whereTotales.ClienteId = id;
+            if (id) whereTotales.clienteId = id;
 
             const totalActivos = await ProductosClientes.count({
                 where: whereTotales,
