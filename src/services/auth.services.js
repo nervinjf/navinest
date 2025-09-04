@@ -86,7 +86,7 @@ class AuthServices {
         algorithm: "HS512",
       });
       
-    const resetLink = `http://localhost:5173/#/resetpassword/${resetpass}`;
+    const resetLink = `https://pedidosnavy.nebconnection.com/#/resetpassword/${resetpass}`;
 
     return {correo: user.correo, link: resetLink, nombre: user.nombre, apellido: user.apellido};
 
