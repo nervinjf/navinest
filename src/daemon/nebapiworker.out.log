@@ -1,0 +1,739 @@
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+⏰ Revisando correos...
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+Zona horaria actual: America/Caracas
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}

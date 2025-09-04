@@ -1,0 +1,12 @@
+2025-08-29 12:18:45 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:18:45 - Started 3032
+2025-08-29 12:22:35 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:22:35 - Started 7656
+2025-08-29 12:28:28 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:28:28 - Started 16276
+2025-08-29 12:34:06 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:34:06 - Started 19136
+2025-08-29 12:37:40 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:37:40 - Started 18804
+2025-08-29 12:46:50 - Starting C:\Program Files\nodejs\node.exe  --max_old_space_size=4096 C:\Users\masteradmin\Documents\NAVY\API\node_modules\node-windows\lib\wrapper.js --file C:\Users\masteradmin\Documents\NAVY\API\src\server.js --scriptoptions= --log "NEB-API-Worker wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-08-29 12:46:50 - Started 9260

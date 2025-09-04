@@ -1,0 +1,76 @@
+{
+  "name": "nestle",
+  "version": "1.0.0",
+  "description": "Nestle pedidos (BPA)",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "rebuild": "npm rebuild",
+    "start": "node ./src/server.js",
+    "seed": "node ./src/seeders/seed.js",
+    "tettt": "npm install node-pre-gyp --fallback-to-build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src/**/*.js"
+    ],
+    "ignore": [
+      "uploads/**",
+      "emails_procesados/**",
+      "emails_no_procesados/**",
+      "src/**/*.json"
+    ],
+    "ext": "js",
+    "delay": "300"
+  },
+  "keywords": [],
+  "author": "nervin flores",
+  "license": "ISC",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@azure-rest/ai-document-intelligence": "^1.1.0",
+    "@azure/storage-blob": "^12.28.0",
+    "@azure/storage-queue": "^12.27.0",
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "cron": "^4.3.2",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "greenlock-express": "^4.0.3",
+    "imapflow": "^1.0.195",
+    "jsonwebtoken": "^8.5.1",
+    "mailparser": "^3.7.4",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.43",
+    "mongoose-morgan": "^1.0.17",
+    "mssql": "^9.3.2",
+    "multer": "^2.0.2",
+    "mysql2": "^2.3.3",
+    "node-cache": "^5.1.2",
+    "node-cron": "^4.2.1",
+    "node-poplib-gowhich": "^1.0.2",
+    "node-windows": "^1.0.0-beta.8",
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "otp-generator": "^4.0.1",
+    "pdf-lib": "^1.17.1",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "poplib": "^0.1.7",
+    "save": "^2.9.0",
+    "sequelize": "^6.37.7",
+    "tedious": "^16.7.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "sequelize-cli": "^6.6.3"
+  },
+  "homepage": ""
+}

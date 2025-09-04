@@ -1,0 +1,720 @@
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0
+❌ Error al conectar a la base de datos: ConnectionRefusedError [SequelizeConnectionRefusedError]
+    at ConnectionManager.connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\mysql\connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async ConnectionManager._connect (C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:222:24)
+    at async C:\Users\masteradmin\Documents\NAVY\API\node_modules\sequelize\lib\dialects\abstract\connection-manager.js:174:32 {
+  parent: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  },
+  original: AggregateError [ECONNREFUSED]: 
+      at internalConnectMultiple (node:net:1134:18)
+      at afterConnectMultiple (node:net:1715:7) {
+    code: 'ECONNREFUSED',
+    fatal: true,
+    [errors]: [ [Error], [Error] ]
+  }
+}
+C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809
+            err = new Error(message);
+                  ^
+
+Error: Missing credentials for "LOGIN"
+    at SMTPConnection._formatError (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:809:19)
+    at SMTPConnection.login (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:454:38)
+    at C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-transport\index.js:375:32
+    at SMTPConnection.<anonymous> (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:215:17)
+    at Object.onceWrapper (node:events:633:28)
+    at SMTPConnection.emit (node:events:519:28)
+    at SMTPConnection._actionEHLO (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:1371:14)
+    at SMTPConnection._processResponse (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:993:20)
+    at SMTPConnection._onData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:774:14)
+    at SMTPConnection._onSocketData (C:\Users\masteradmin\Documents\NAVY\API\node_modules\nodemailer\lib\smtp-connection\index.js:195:44) {
+  code: 'EAUTH',
+  command: 'API'
+}
+
+Node.js v22.19.0

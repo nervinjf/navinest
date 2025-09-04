@@ -1,0 +1,6 @@
+{
+  "watch": ["src/**/*.js"],
+  "ignore": ["uploads/**", "emails_procesados/**", "emails_no_procesados/**"],
+  "ext": "js",
+  "delay": "300"
+}
