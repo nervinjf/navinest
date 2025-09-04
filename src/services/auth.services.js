@@ -25,7 +25,7 @@ class AuthServices {
   static genToken(data) {
     try {
       const token = jwt.sign(data, process.env.SECRET, {
-        expiresIn: '25m',
+        expiresIn: '8h',
         algorithm: "HS512",
       });
       return token;
