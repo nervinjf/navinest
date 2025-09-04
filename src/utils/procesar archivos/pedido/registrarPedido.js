@@ -146,7 +146,7 @@ async function registrarPedido({ extractedData, productosNoEncontrados, buffer, 
   let rutaCombinado; // 👈 salida final: URL del blob o path local si cae en fallback
   try {
     const info = await uploadBufferToBlob({
-      containerName: "pdf",
+      container: "pdf",
       blobName,
       buffer: combinadoBuffer,
       contentType: "application/pdf",
