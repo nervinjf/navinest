@@ -3,16 +3,15 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
-  host: "mail.neb.com.ve",
-  port: 2525,
-  secure: false,
+  host: "nebconnection.com",
+  port: 465,
+  secure: true,
   auth: {
-    user: "noreply@neb.com.ve",
-    pass: process.env.G_PASSWORD,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
   tls: {
-    // do not fail on invalid certs
-    rejectUnauthorized: false,
+    rejectUnauthorized: true,
   },
 });
 
