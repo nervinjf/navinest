@@ -183,7 +183,6 @@ class SucursalesServices {
 
     return res;
     } catch (error) {
-            console.error("❌ Error en getByIdConPedidosPaginados:", error);
             throw error;
         }
     
