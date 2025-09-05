@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const upload = require("../middlewares/upload.single"); // tu middleware de multer
+const upload = require("../middlewares/upload.middleware");
 const {
   CreateBulkBranches,
   EditBulkBranches,
