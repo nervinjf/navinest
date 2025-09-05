@@ -66,7 +66,7 @@ function agruparPorFactura(input) {
 function buildTextoFaltantes(productosNoEncontrados) {
   const grupos = agruparPorFactura(productosNoEncontrados);
   if (grupos.size === 0) {
-    return "✅ Todos los productos fueron encontrados correctamente.";
+    return "";
   }
 
   let txt = "⚠ Productos no encontrados en BD clientes (agrupados por pedido):\n";
