@@ -44,29 +44,31 @@ static async listPedidos(filtros, page = 1, limit = 20) {
   function startOfDay(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
   function endOfDay(d)   { const x = new Date(d); x.setHours(23, 59, 59, 999); return x; }
 
-  function buildDateWhere({ fecha, from, to }) {
-    const today = new Date();
+  function ymd(d) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth()+1).padStart(2,'0');
+  const day = String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
 
-    if (fecha === "hoy") {
-      return { [Op.between]: [startOfDay(today), endOfDay(today)] };
-    }
-    if (fecha === "mes") {
-      const first = new Date(today.getFullYear(), today.getMonth(), 1);
-      return { [Op.gte]: startOfDay(first) };
-    }
-    if (fecha === "rango" && (from || to)) {
-      const ini = from ? startOfDay(new Date(from)) : undefined;
-      const fin = to   ? endOfDay(new Date(to))     : undefined;
-      if (ini && fin) return { [Op.between]: [ini, fin] };
-      if (ini)        return { [Op.gte]: ini };
-      if (fin)        return { [Op.lte]: fin };
-    }
-
-    // por defecto: última semana (incluye hoy)
-    const ini = new Date();
-    ini.setDate(ini.getDate() - 6);
-    return { [Op.between]: [startOfDay(ini), endOfDay(today)] };
+function buildDateWhere({ fecha, from, to }) {
+  const today = new Date();
+  if (fecha === "hoy") {
+    const ymdToday = ymd(today);
+    return ymdToday; // <-- MATCH exacto si tu campo es DATEONLY
   }
+  if (fecha === "mes") {
+    const first = new Date(today.getFullYear(), today.getMonth(), 1);
+    return { [Op.between]: [ymd(first), ymd(today)] };
+  }
+  if (fecha === "rango" && (from || to)) {
+    if (from && to)   return { [Op.between]: [from, to] };
+    if (from)         return { [Op.gte]: from };
+    if (to)           return { [Op.lte]: to };
+  }
+  const ini = new Date(); ini.setDate(ini.getDate() - 6);
+  return { [Op.between]: [ymd(ini), ymd(today)] };
+}
 
   try {
     const { nombre, status, fecha, from, to, clientesId } = filtros;
