@@ -7,6 +7,7 @@ const PedidosServices = require("./pedidos.services");
 const AuditoriaServices = require("./auditoria.services")
 const ProductosMesesService = require('./productosMeses.services')
 const AllowListServices = require("./email-allowlist.services");
+const SucursalesServices  = require("./sucursales.services");
 
 module.exports = {
     UserServices,
@@ -17,5 +18,6 @@ module.exports = {
     PedidosServices,
     AuditoriaServices,
     ProductosMesesService,
-    AllowListServices
+    AllowListServices,
+    SucursalesServices
 };
