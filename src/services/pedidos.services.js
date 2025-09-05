@@ -73,7 +73,7 @@ static async listPedidos(filtros, page = 1, limit = 20) {
 
     const where = {};
     if (status) where.estado = status;
-    if (clientesId) where.ClienteId = Number(clientesId);
+    if (clientesId) where.clienteId = Number(clientesId);
     where.fecha_pedido = buildDateWhere({ fecha, from, to });
 
     // LIKE operator por dialecto
@@ -180,7 +180,7 @@ static async listPedidos(filtros, page = 1, limit = 20) {
                 ]
             });
 
-            const cliente = await Clientes.findByPk(pedido.ClienteId)
+            const cliente = await Clientes.findByPk(pedido.clienteId)
 
             const codigosIgnorados = pedido.pedido?.filter(det => det.observacionConversion && det.observacionConversion.includes("("))
                 ?.map(det => {
