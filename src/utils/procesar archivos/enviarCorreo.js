@@ -97,10 +97,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
 
   const cuerpoCorreo =
-    `📦 Pedido procesado\n\n` +
-    `🏢 Empresa: ${empresa}\n` +
-    `🧾 N° Factura: ${nroFactura}\n\n` +
-    `Adjunto encontrarás el archivo Excel con los datos procesados.\n\n` +
+    `En el adjunto encontrarás el archivo Excel con los datos procesados.\n\n` +
     `${productosTexto}`;
 
   const attachments = [];
@@ -115,7 +112,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
       ensureEmail("vbenaventa@neb.com.ve"),
       ensureEmail("nflores@neb.com.ve")
     ],
-    subject: `📦 Pedido procesado – ${empresa} – Factura ${nroFactura}`,
+    subject: `Pedido procesado`,
     text: cuerpoCorreo,
     attachments,
   };
@@ -145,9 +142,6 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
 
   let cuerpoCorreo =
-    `❌ Error al procesar el pedido\n\n` +
-    `🏢 Empresa: ${empresa}\n` +
-    `🧾 N° Factura: ${nroFactura}\n\n` +
     `${productosTexto}\n`;
 
   const attachments = [];
@@ -170,7 +164,7 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
     to: ensureEmail(destinatario),
-    subject: `❌ Fallo en el pedido – ${empresa} – Factura ${nroFactura}`,
+    subject: `Fallo - productos no encontrados`,
     text: cuerpoCorreo,
     attachments,
   };
