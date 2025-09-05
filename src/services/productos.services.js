@@ -122,7 +122,7 @@ class ProductosServices {
 
         const { estado, categoria, unidadNegocio, busqueda } = filtros;
         const where = {};
-        if (estado) where.estado = estado;
+        if (estado) where.estado_vigente = estado;
         if (categoria) where.categoria = categoria;
         if (unidadNegocio) where.unidadNegocio = unidadNegocio;
         if (busqueda) {
