@@ -155,7 +155,10 @@ class ProductosServices {
             const lista = categorias.map((c) => c.get('categoria')).filter(Boolean); // eliminamos nulos si hay
 
             const { count, rows } = await Productos.findAndCountAll({
-                where,
+                where: {
+                    ...where,
+                    id: { [Op.ne]: 320 }   // 👈 excluye el id 320
+                },
                 limit,
                 offset,
                 order: [["producto", "ASC"]],
