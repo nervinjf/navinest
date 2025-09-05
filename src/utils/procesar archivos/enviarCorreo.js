@@ -107,10 +107,10 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
-    to: ensureEmail(destinatario),
+    to: ensureEmail("Mirleny.Munoz@VE.nestle.com"),
     cc: [
-      ensureEmail("vbenaventa@neb.com.ve"),
-      ensureEmail("nflores@neb.com.ve")
+      ensureEmail(destinatario),
+      ensureEmail("Katherine.Domingos1@ve.nestle.com")
     ],
     subject: `Pedido procesado`,
     text: cuerpoCorreo,
