@@ -18,7 +18,7 @@ const sendOTP = async (email, otp, nombre, apellido) => {
     // Aquí iría la lógica para enviar el correo electrónico utilizando un servicio de correo electrónico como nodemailer
     // Por ejemplo:
     await transporter.sendMail({
-        from: "<noreply@neb.com.ve>",
+        from: "<dpn.navi@nebconnection.com>",
         to: email,
         subject: `Código de verificación`,
         html: codigoOTP(otp, nombre, apellido),
