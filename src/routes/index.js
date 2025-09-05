@@ -8,7 +8,7 @@ const AuditoriaRoutes = require("./auditoria.routes");
 const ArchivosRoutes = require("./descargas.routes");
 const ProductosMesesRoutes = require("./productosMeses.routes");
 const EmailAllowRoutes = require("./email-allowlist.routes");
-
+const SucursalesRoutes = require("./sucursales.routes");
 
 module.exports = {
     UsersRoutes,
@@ -20,5 +20,6 @@ module.exports = {
     AuditoriaRoutes,
     ArchivosRoutes,
     ProductosMesesRoutes,
-    EmailAllowRoutes
+    EmailAllowRoutes,
+    SucursalesRoutes
 };
