@@ -160,7 +160,8 @@ class SucursalesServices {
    * Crear una sucursal (valida UNIQUE clienteId+codigo).
    */
   static async postOne(data, usuarioId) {
-    const { clienteId, codigo, sucursal, categoria = null } = data || {};
+    try{
+      const { clienteId, codigo, sucursal, categoria = null } = data || {};
     if (!clienteId || !codigo || !sucursal) {
       throw new Error("clienteId, codigo y sucursal son obligatorios");
     }
@@ -181,6 +182,12 @@ class SucursalesServices {
     );
 
     return res;
+    } catch (error) {
+            console.error("❌ Error en getByIdConPedidosPaginados:", error);
+            throw error;
+        }
+    
+    
     }
 
   /**
