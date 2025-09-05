@@ -311,7 +311,7 @@ function revisarCorreo() {
 
       // 4) Validación / extracción
       const esValido =
-        asunto.includes("Factura E2O") ||
+        asunto.includes("Pedido") ||
         asunto.includes("XML") ||
         (msg.attachments || []).some(isPdf);
 
