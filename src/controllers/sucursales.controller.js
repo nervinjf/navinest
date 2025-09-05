@@ -52,7 +52,7 @@ const ListBranches = async (req, res, next) => {
 const CreateBranch = async (req, res, next) => {
   try {
     const data = req.body; // { codigo, sucursal, categoria?, clienteId }
-    const usuarioId = req.user?.id || 0;
+    const usuarioId = req.user?.id || 1;
     const result = await SucursalesServices.postOne(data, usuarioId);
     res.json(result);
   } catch (error) {
