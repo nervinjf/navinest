@@ -75,7 +75,7 @@ const forgotPassword = async (req, res, next) => {
 
     try {
       await transporter.sendMail({
-        from: "<noreply@neb.com.ve>",
+        from: "<dpn.navi@nebconnection.com>",
         to: result.correo,
         subject: `Código de verificación`,
         html: linkReset(result.link, result.nombre, result.apellido)
