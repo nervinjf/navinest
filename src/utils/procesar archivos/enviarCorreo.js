@@ -193,6 +193,9 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
     to: ensureEmail(destinatario),
+    cc: [
+      ensureEmail("nflores@neb.com.ve")
+    ],
     subject: `Productos no encontrados - ${subject}`,
     text: cuerpoCorreo,
     attachments,
