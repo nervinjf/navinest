@@ -44,7 +44,7 @@ const codigoOTP = (otp, nombre, apellido) => `
 	                    </tr>
 	                    <tr>
 		                    <td style="padding:20px 0 0 0;font-size:14px;line-height:24px;font-family:'Open Sans','Trebuchet MS',sans-serif">
-Utilice la siguiente contraseña de un solo uso (<span class="il">OTP</span>) para iniciar sesión en su cuenta de nebconnection.<br>Esta <span class="il">OTP</span> será válida durante 2 minutos </td>
+Utilice la siguiente contraseña de un solo uso (<span class="il">OTP</span>) para iniciar sesión en su cuenta de nebconnection.<br>Esta <span class="il">OTP</span> será válida durante 10 minutos </td>
 	                    </tr>
 	                    <tr>
 		                    <td style="padding:20px 0 0 0;font-size:22px;line-height:24px;font-family:'Open Sans','Trebuchet MS',sans-serif">
