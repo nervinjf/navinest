@@ -37,6 +37,10 @@ function keyExcel({ rutaExcel, to, sourceId, meta }) {
   return makeIdempotencyKey({ kind: "excel_global", to, sig, meta });
 }
 
+function cleanSubject(s, fb = 'Excel Global') {
+  return String(s || fb).replace(/\r?\n/g, ' ').trim().slice(0, 200);
+}
+
 
 function keyFaltantes({ faltantes, to, sourceId, meta }) {
   if (sourceId) return makeIdempotencyKey({ kind: "faltantes", to, sourceId });
@@ -46,7 +50,7 @@ function keyFaltantes({ faltantes, to, sourceId, meta }) {
 
 async function enviarCorreoConAdjuntoLogged(rutaExcel, adjuntos = [], ctx = {}) {
   const to = parseFirstEmail(ctx?.destinatario) || ensureEmailLocal(ctx?.destinatario);
-  const subject = ctx?.subject || ctx?.asunto || "Excel Global"
+  const subject = cleanSubject(ctx?.subject || ctx?.asunto || 'Excel Global');
   const meta = { tipo: "excel_global", ...ctx, archivo: path.basename(rutaExcel) };
 
   const idempotencyKey =
