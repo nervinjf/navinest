@@ -68,6 +68,10 @@ function buildTextoFaltantes(productosNoEncontrados) {
     return "";
   }
 
+  // helper peque para formatear números
+  const fmt = (n) => (Number.isFinite(Number(n)) ? Number(n).toFixed(2) : null);
+
+  // agrupación por pedido
   const grupos = new Map();
   for (const it of productosNoEncontrados) {
     const factura = String(
@@ -79,14 +83,21 @@ function buildTextoFaltantes(productosNoEncontrados) {
 
   let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
 
-  for (const [factura, items] of grupos.entries()) {
+  // ordena por clave de pedido para que sea estable
+  const ordenadas = Array.from(grupos.entries()).sort(([a], [b]) => a.localeCompare(b));
+
+  for (const [factura, items] of ordenadas) {
     const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
     txt += `\n- Pedido (${factura}) — Sucursal: ${sucursal}\n`;
 
     for (const it of items) {
-      const mat  = pickMat(it);
-      const desc = pickDesc(it);
+      // material/descripcion tolerantes
+      const mat =
+        it?.material ?? it?.Material ?? it?.materialOriginal ?? it?.codigo ?? it?.SKU ?? "s/d";
+      const desc =
+        it?.descripcion ?? it?.Description ?? it?.desc ?? "s/d";
 
+      // estado mostrado
       let estadoLinea = "NO ENCONTRADO";
       if (it?.motivo === "inactivo") {
         estadoLinea = `INACTIVO (SAP: ${it?.codigoSAP || "s/d"})`;
@@ -94,12 +105,22 @@ function buildTextoFaltantes(productosNoEncontrados) {
         estadoLinea = `ENCONTRADO (SAP: ${it.codigoSAP})`;
       }
 
-      txt += `   - ${mat} — ${desc} — ${estadoLinea}\n`;
+      // métricas opcionales
+      const pcs  = fmt(it?.cantidad);
+      const pu   = fmt(it?.precioUnitarioUsd);
+      const tot  = fmt(it?.totalLineaUsd);
+      const extra =
+        [pcs && `cant=${pcs}`, pu && `pu=${pu}`, tot && `total=${tot}`]
+          .filter(Boolean)
+          .join(" ");
+
+      txt += `   - ${mat} — ${desc} — ${estadoLinea}${extra ? ` [${extra}]` : ""}\n`;
     }
   }
 
   return txt.trimEnd();
 }
+
 
 // ================= Envíos ======================
 
