@@ -20,7 +20,7 @@ const verifyOTP = async (req, res, next) => {
             const otpTimestamp = new Date(user.horaotp);
             const diffInSeconds = (now - otpTimestamp) / 1000;
 
-            if (diffInSeconds <= 120) {
+            if (diffInSeconds <= 600) {
                 // OTP válido
                 const result = await UserServices.create(newUser);
                 await UserServices.deleteEmail(email);
