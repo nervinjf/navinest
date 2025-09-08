@@ -318,7 +318,7 @@ router.post(
           empresa: 'MÚLTIPLES',
           nroFactura: pedidoId ? `Pedido ${pedidoId}` : 'GLOBAL',
           destinatario,
-                asunto: asuntoMeta,  
+         subject: asuntoMeta,  
           sourceId: evt.id,
           idempotencyKey: `eg-attach:${evt.id}`,
         });
