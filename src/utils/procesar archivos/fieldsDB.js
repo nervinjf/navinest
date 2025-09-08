@@ -270,7 +270,7 @@ function pickLineTotalFromItemObject(obj) {
 /** Busca vínculo cliente-producto + joins habituales */
 async function obtenerCodigoDesdeDB(codigo, sucu) {
   try {
-    console.log(codigo)
+    console.log(codigo, sucu)
     const producto = await ProductosClientes.findOne({
       where: { codigoCliente: { [Op.like]: `%${codigo}%` } },
       include: [
@@ -278,17 +278,17 @@ async function obtenerCodigoDesdeDB(codigo, sucu) {
         {
           model: Clientes,
           as: "cliente",
-          include: [{
-            model: Sucursales,
-            as: "sucursales",
-            required: true,
-            where: {
-              [Op.or]: [
-                { codigo:   { [Op.like]: `%${sucu}%` } },
-                { sucursal: { [Op.like]: `%${sucu}%` } },
-              ]
-            }
-          }]
+          // include: [{
+          //   model: Sucursales,
+          //   as: "sucursales",
+          //   required: true,
+          //   where: {
+          //     [Op.or]: [
+          //       { codigo:   { [Op.like]: `%${sucu}%` } },
+          //       { sucursal: { [Op.like]: `%${sucu}%` } },
+          //     ]
+          //   }
+          // }]
         }
       ]
     });
