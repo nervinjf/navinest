@@ -108,7 +108,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
   if (typeof filePath === "string" && filePath) {
     attachments.push({ filename: path.basename(filePath), path: filePath });
   }
-  const finalSubject = sanitizeSubject(subject ?? asunto ?? base);
+
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
@@ -119,7 +119,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
       // ensureEmail(destinatario),
       // ensureEmail("Katherine.Domingos1@ve.nestle.com")
     // ],
-    subject: finalSubject,
+    subject: `Pedido procesado - ${subject}`,
     text: cuerpoCorreo,
     attachments,
   };
@@ -151,7 +151,7 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
     String(s || fb).replace(/\r?\n/g, " ").trim().slice(0, 200);
 
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
-    const finalSubject = sanitizeSubject(subject ?? asunto);
+
 
   let cuerpoCorreo =
     `${productosTexto}\n`;
@@ -176,7 +176,7 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
     to: ensureEmail(destinatario),
-    subject: finalSubject,
+    subject: `Productos no encontrados - ${subject}`,
     text: cuerpoCorreo,
     attachments,
   };
