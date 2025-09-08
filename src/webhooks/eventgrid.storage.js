@@ -311,6 +311,14 @@ router.post(
           process.env.DEFAULT_REPORT_EMAIL ||
           'nflores@neb.com.ve';
 
+               function normalizeSubject(s, fb = 'Excel generado') {
+  return String(s || fb).replace(/\r?\n/g, ' ').trim().slice(0, 200);
+}
+
+               const asuntoFinal = normalizeSubject(
+  asuntoMeta || (pedidoId ? `Pedido procesado - ${pedidoId}` : 'Excel generado')
+);
+
            
 
         // 5) Enviar el correo con adjunto
@@ -318,7 +326,7 @@ router.post(
           empresa: 'MÚLTIPLES',
           nroFactura: pedidoId ? `Pedido ${pedidoId}` : 'GLOBAL',
           destinatario,
-         subject: asuntoMeta,  
+         subject: asuntoFinal,  
           sourceId: evt.id,
           idempotencyKey: `eg-attach:${evt.id}`,
         });
