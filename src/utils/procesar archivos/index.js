@@ -585,7 +585,7 @@ const destinatarioSeguro = parseFirstEmail(remitente) || ensureEmailLocal(remite
         destinatario: destinatarioSeguro,
         sourceId,
         idempotencyKey: `faltantes:${correoId}`,
-        asunto
+        subject: asunto,
       });
     }
 
