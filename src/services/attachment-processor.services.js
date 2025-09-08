@@ -246,6 +246,7 @@ async function procesarPDFsDeCorreoConJob({
   jobsSeed = [],           // IDs de jobs creados por el listener (uno por PDF)
   globalJobId,              // <<<<<< añadido
   reuseGlobalJob = false,   // <<<<<< añadido
+   asunto,
 }) {
   if (!Array.isArray(archivos) || archivos.length === 0) {
     throw new Error("No hay archivos PDF para procesar.");
@@ -324,6 +325,7 @@ async function procesarPDFsDeCorreoConJob({
       remitente: destinatarioSeguro,
       preAnalisis: { porArchivo: prePorArchivo, totalPaginas, azureMsTotal },
       sourceId,
+      asunto
     });
 
     // Normaliza a array TODOS los pedidos generados
