@@ -92,10 +92,11 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
     empresa = "Desconocida",
     nroFactura = "N/A",
     destinatario = "nflores@neb.com.ve",
-    subject = "GLOBAL"
+    subject
   } = meta;
 
-  const finalSubject = subject
+  const sanitizeSubject = (s, fb = 'Pedido procesado') =>
+    String(s || fb).replace(/\r?\n/g, ' ').trim().slice(0, 200);
 
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
 
@@ -107,6 +108,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
   if (typeof filePath === "string" && filePath) {
     attachments.push({ filename: path.basename(filePath), path: filePath });
   }
+  const finalSubject = sanitizeSubject(subject ?? asunto ?? base);
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
@@ -117,7 +119,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
       // ensureEmail(destinatario),
       // ensureEmail("Katherine.Domingos1@ve.nestle.com")
     // ],
-    subject: `Pedido procesado - ${finalSubject}`,
+    subject: finalSubject,
     text: cuerpoCorreo,
     attachments,
   };
@@ -142,12 +144,14 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
     empresa = "Desconocida",
     nroFactura = "N/A",
     destinatario = "nflores@neb.com.ve",
-    subject = "GLOBAL"
+    subject
   } = meta;
 
-  const finalSubject = subject
+    const sanitizeSubject = (s, fb = "Productos no encontrados - ") =>
+    String(s || fb).replace(/\r?\n/g, " ").trim().slice(0, 200);
 
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
+    const finalSubject = sanitizeSubject(subject ?? asunto);
 
   let cuerpoCorreo =
     `${productosTexto}\n`;
@@ -172,7 +176,7 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
     to: ensureEmail(destinatario),
-    subject: `Productos no encontrados - ${finalSubject}`,
+    subject: finalSubject,
     text: cuerpoCorreo,
     attachments,
   };
