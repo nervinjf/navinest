@@ -315,8 +315,7 @@ router.post(
   return String(s || fb).replace(/\r?\n/g, ' ').trim().slice(0, 200);
 }
 
-               const asuntoFinal = normalizeSubject(
-  asuntoMeta || (pedidoId ? `Pedido procesado - ${pedidoId}` : 'Excel generado')
+               const asuntoFinal = asuntoMeta;
 );
 
            
