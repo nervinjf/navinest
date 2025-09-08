@@ -85,7 +85,7 @@ function buildTextoFaltantes(productosNoEncontrados) {
  * Envía un correo con un archivo adjunto (Excel) y un mensaje.
  * @param {string} filePath - Ruta del archivo adjunto (Excel).
  * @param {Array} productosNoEncontrados - Puede venir en formato plano o agrupado.
- * @param {{ empresa?: string, nroFactura?: string, destinatario?: string, asunto?: string, }} meta
+ * @param {{ empresa?: string, nroFactura?: string, destinatario?: string, asunto?: string, subject?: string, }} meta
  */
 async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], meta = {}) {
   const {
@@ -94,6 +94,8 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
     destinatario = "nflores@neb.com.ve",
     subject = "GLOBAL"
   } = meta;
+
+  const finalSubject = subject
 
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
 
@@ -115,7 +117,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
       // ensureEmail(destinatario),
       // ensureEmail("Katherine.Domingos1@ve.nestle.com")
     // ],
-    subject: `Pedido procesado - ${subject}`,
+    subject: `Pedido procesado - ${finalSubject}`,
     text: cuerpoCorreo,
     attachments,
   };
@@ -133,7 +135,7 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
  * Envía correo de error. `adjunto` puede ser Buffer (PDF) o ruta string (PDF) o null.
  * @param {Buffer|string|null} adjuntoPDF
  * @param {Array} productosNoEncontrados - Plano o agrupado por factura.
- * @param {{ empresa?: string, nroFactura?: string, destinatario?: string, asunto?: string, }} meta
+ * @param {{ empresa?: string, nroFactura?: string, destinatario?: string, asunto?: string, subject?: string, }} meta
  */
 async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta = {}) {
   const {
@@ -142,6 +144,8 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
     destinatario = "nflores@neb.com.ve",
     subject = "GLOBAL"
   } = meta;
+
+  const finalSubject = subject
 
   const productosTexto = buildTextoFaltantes(productosNoEncontrados);
 
@@ -168,7 +172,7 @@ async function enviarCorreoDeError(adjuntoPDF, productosNoEncontrados = [], meta
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
     to: ensureEmail(destinatario),
-    subject: `Productos no encontrados - ${subject}`,
+    subject: `Productos no encontrados - ${finalSubject}`,
     text: cuerpoCorreo,
     attachments,
   };
