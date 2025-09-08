@@ -64,62 +64,37 @@ function agruparPorFactura(input) {
 }
 
 function buildTextoFaltantes(productosNoEncontrados) {
-  if (!Array.isArray(productosNoEncontrados) || productosNoEncontrados.length === 0) {
-    return "";
-  }
-
-  // helper peque para formatear números
-  const fmt = (n) => (Number.isFinite(Number(n)) ? Number(n).toFixed(2) : null);
-
-  // agrupación por pedido
-  const grupos = new Map();
-  for (const it of productosNoEncontrados) {
-    const factura = String(
-      it?.NumeroFactura || it?.factura || it?.numeroFactura || "SIN_FACTURA"
-    );
-    if (!grupos.has(factura)) grupos.set(factura, []);
-    grupos.get(factura).push(it);
+  const grupos = agruparPorFactura(productosNoEncontrados);
+  if (grupos.size === 0) {
+    return "✅ Todos los productos fueron encontrados correctamente.";
   }
 
   let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
 
-  // ordena por clave de pedido para que sea estable
-  const ordenadas = Array.from(grupos.entries()).sort(([a], [b]) => a.localeCompare(b));
-
-  for (const [factura, items] of ordenadas) {
+  for (const [factura, items] of grupos.entries()) {
+    // toma la sucursal del primer item que la tenga
     const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
     txt += `\n- Pedido (${factura}) — Sucursal: ${sucursal}\n`;
 
     for (const it of items) {
-      // material/descripcion tolerantes
-      const mat =
-        it?.material ?? it?.Material ?? it?.materialOriginal ?? it?.codigo ?? it?.SKU ?? "s/d";
-      const desc =
-        it?.descripcion ?? it?.Description ?? it?.desc ?? "s/d";
+      const mat  = pickMat(it);
+      const desc = pickDesc(it);
 
-      // estado mostrado
-      let estadoLinea = "NO ENCONTRADO";
+      // estado por línea
+      let estado = "NO ENCONTRADO";
       if (it?.motivo === "inactivo") {
-        estadoLinea = `INACTIVO (SAP: ${it?.codigoSAP || "s/d"})`;
+        estado = `INACTIVO${it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : ""}`;
       } else if (it?.encontradoEnBD === true && it?.codigoSAP) {
-        estadoLinea = `ENCONTRADO (SAP: ${it.codigoSAP})`;
+        estado = `ENCONTRADO (SAP: ${it.codigoSAP})`;
       }
 
-      // métricas opcionales
-      const pcs  = fmt(it?.cantidad);
-      const pu   = fmt(it?.precioUnitarioUsd);
-      const tot  = fmt(it?.totalLineaUsd);
-      const extra =
-        [pcs && `cant=${pcs}`, pu && `pu=${pu}`, tot && `total=${tot}`]
-          .filter(Boolean)
-          .join(" ");
-
-      txt += `   - ${mat} — ${desc} — ${estadoLinea}${extra ? ` [${extra}]` : ""}\n`;
+      txt += `   - ${mat} — ${desc} — ${estado}\n`;
     }
   }
 
   return txt.trimEnd();
 }
+
 
 
 // ================= Envíos ======================
