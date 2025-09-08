@@ -30,8 +30,8 @@ function ensureEmail(v) {
 }
 
 // tolerante con claves diferentes
-const pickMat = (it) => it?.material ?? it?.Material ?? it?.codigo ?? it?.SKU ?? "s/d";
-const pickDesc = (it) => it?.descripcion ?? it?.Description ?? it?.desc ?? "s/d";
+const pickMat = (it) => it?.material ?? it?.material ?? it?.codigo ?? it?.SKU ?? "s/d";
+const pickDesc = (it) => it?.descripcion ?? it?.descripcion ?? it?.desc ?? "s/d";
 
 /**
  * Normaliza `productosNoEncontrados` en Map<factura, items[]>
