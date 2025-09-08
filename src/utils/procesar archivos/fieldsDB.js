@@ -278,17 +278,17 @@ async function obtenerCodigoDesdeDB(codigo, sucu) {
         {
           model: Clientes,
           as: "cliente",
-          // include: [{
-          //   model: Sucursales,
-          //   as: "sucursales",
-          //   required: true,
-          //   where: {
-          //     [Op.or]: [
-          //       { codigo:   { [Op.like]: `%${sucu}%` } },
-          //       { sucursal: { [Op.like]: `%${sucu}%` } },
-          //     ]
-          //   }
-          // }]
+          include: [{
+            model: Sucursales,
+            as: "sucursales",
+            required: true,
+            where: {
+              [Op.or]: [
+                { codigo:   { [Op.like]: `%${sucu}%` } },
+                { sucursal: { [Op.like]: `%${sucu}%` } },
+              ]
+            }
+          }]
         }
       ]
     });
