@@ -46,7 +46,7 @@ function keyFaltantes({ faltantes, to, sourceId, meta }) {
 
 async function enviarCorreoConAdjuntoLogged(rutaExcel, adjuntos = [], ctx = {}) {
   const to = parseFirstEmail(ctx?.destinatario) || ensureEmailLocal(ctx?.destinatario);
-  const subject = ctx?.subject || "Excel Global";
+  const subject = ctx?.subject || ctx?.asunto || "Excel Global"
   const meta = { tipo: "excel_global", ...ctx, archivo: path.basename(rutaExcel) };
 
   const idempotencyKey =
@@ -60,7 +60,7 @@ async function enviarCorreoConAdjuntoLogged(rutaExcel, adjuntos = [], ctx = {}) 
   }
 
   try {
-    const ctx2 = { ...ctx, destinatario: to };
+    const ctx2 = { ...ctx, destinatario: to, subject };
     const resp = await enviarCorreoConAdjunto(rutaExcel, adjuntos, ctx2);
     await finishEmailLog(row, {
       status: "sent",
@@ -80,8 +80,9 @@ async function enviarCorreoConAdjuntoLogged(rutaExcel, adjuntos = [], ctx = {}) 
 
 async function enviarCorreoDeErrorLogged(_unused, faltantes = [], ctx = {}) {
   const to = parseFirstEmail(ctx?.destinatario) || ensureEmailLocal(ctx?.destinatario);
-  const subject = ctx?.subject || "Productos no encontrados";
   const meta = { tipo: "faltantes", ...ctx, totalFaltantes: Array.isArray(faltantes) ? faltantes.length : 0 };
+   // ✅ ACEPTA subject o asunto (back-compat con tu flujo)
+  const subject = ctx?.subject || ctx?.asunto || "Excel Global"
 
   const idempotencyKey =
     ctx.idempotencyKey // ← p.ej. faltantes:${sourceId}
@@ -94,7 +95,7 @@ async function enviarCorreoDeErrorLogged(_unused, faltantes = [], ctx = {}) {
   }
 
   try {
-    const ctx2 = { ...ctx, destinatario: to };
+    const ctx2 = { ...ctx, destinatario: to, subject  };
     const resp = await enviarCorreoDeError(null, faltantes, ctx2);
     await finishEmailLog(row, {
       status: "sent",
