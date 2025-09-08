@@ -30,7 +30,7 @@ function ensureEmail(v) {
 }
 
 // tolerante con claves diferentes
-const pickMat = (it) => it?.material ?? it?.material ?? it?.codigo ?? it?.SKU ?? "s/d";
+const pickMat = (it) => it?.material ?? it?.material ?? it?.materialOriginal ?? it?.SKU ?? "s/d";
 const pickDesc = (it) => it?.descripcion ?? it?.descripcion ?? it?.desc ?? "s/d";
 
 /**
