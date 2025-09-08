@@ -7,7 +7,7 @@ const iniciarLimpiezaOTP = () => {
   // Ejecutar cada minuto
   cron.schedule("* * * * *", async () => {
     try {
-      const haceDosMinutos = moment().subtract(2, "minutes").toDate();
+      const haceDosMinutos = moment().subtract(10, "minutes").toDate();
 
       const eliminados = await TemporaryUser.destroy({
         where: {
