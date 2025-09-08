@@ -270,6 +270,7 @@ function pickLineTotalFromItemObject(obj) {
 /** Busca vínculo cliente-producto + joins habituales */
 async function obtenerCodigoDesdeDB(codigo, sucu) {
   try {
+    console.log(codigo)
     const producto = await ProductosClientes.findOne({
       where: { codigoCliente: { [Op.like]: `%${codigo}%` } },
       include: [
@@ -291,6 +292,7 @@ async function obtenerCodigoDesdeDB(codigo, sucu) {
         }
       ]
     });
+    console.log(producto)
     return producto || null;
   } catch (e) {
     console.log(e);
