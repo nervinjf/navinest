@@ -64,18 +64,40 @@ function agruparPorFactura(input) {
 }
 
 function buildTextoFaltantes(productosNoEncontrados) {
-  const grupos = agruparPorFactura(productosNoEncontrados);
-  if (grupos.size === 0) {
+  if (!Array.isArray(productosNoEncontrados) || productosNoEncontrados.length === 0) {
     return "";
   }
 
-  let txt = "⚠ Productos no encontrados en BD clientes (agrupados por pedido):\n";
+  const grupos = new Map();
+  for (const it of productosNoEncontrados) {
+    const factura = String(
+      it?.NumeroFactura || it?.factura || it?.numeroFactura || "SIN_FACTURA"
+    );
+    if (!grupos.has(factura)) grupos.set(factura, []);
+    grupos.get(factura).push(it);
+  }
+
+  let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
+
   for (const [factura, items] of grupos.entries()) {
-    txt += `\n- Pedido (${factura}):\n`;
+    const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
+    txt += `\n- Pedido (${factura}) — Sucursal: ${sucursal}\n`;
+
     for (const it of items) {
-      txt += `   - ${pickMat(it)} — ${pickDesc(it)}\n`;
+      const mat  = pickMat(it);
+      const desc = pickDesc(it);
+
+      let estadoLinea = "NO ENCONTRADO";
+      if (it?.motivo === "inactivo") {
+        estadoLinea = `INACTIVO (SAP: ${it?.codigoSAP || "s/d"})`;
+      } else if (it?.encontradoEnBD === true && it?.codigoSAP) {
+        estadoLinea = `ENCONTRADO (SAP: ${it.codigoSAP})`;
+      }
+
+      txt += `   - ${mat} — ${desc} — ${estadoLinea}\n`;
     }
   }
+
   return txt.trimEnd();
 }
 
