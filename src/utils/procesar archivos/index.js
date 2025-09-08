@@ -410,6 +410,7 @@ async function procesarArchivo(entrada, opciones = {}) {
     nombre = "archivo.pdf",
     preAnalisis = null, // { porArchivo: [ { grupos, resumenJSON }, ... ] }
     sourceId = null,
+    asunto = null,
   } = opciones;
 
   const archivos = Array.isArray(entrada)
@@ -564,7 +565,8 @@ const destinatarioSeguro = parseFirstEmail(remitente) || ensureEmailLocal(remite
         blob: blobName,          // ej: "pedido_1693512345678_ab12cd34.json"
         outName,                 // ej: "E2O-TA-12_13.xlsm"
         outPrefix: "pruebas",     // opcional: subcarpeta virtual en 'output/'
-        replyTo: destinatarioSeguro          // << para metadata del Excel
+        replyTo: destinatarioSeguro,
+        Asunto: asunto // << para metadata del Excel
       };
       await ponerMensajeCola(queuePayload);
 
@@ -583,6 +585,7 @@ const destinatarioSeguro = parseFirstEmail(remitente) || ensureEmailLocal(remite
         destinatario: destinatarioSeguro,
         sourceId,
         idempotencyKey: `faltantes:${correoId}`,
+        Asunto: asunto
       });
     }
 
