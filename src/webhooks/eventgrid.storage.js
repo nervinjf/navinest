@@ -272,10 +272,12 @@ router.post(
 
         // 1) Leer metadata para el destinatario
         let destinatarioMeta = null;
+         let asuntoMeta = null;
         try {
           const props = await getBlobProps(container, blobName);
           const md = props?.metadata || {};
           destinatarioMeta = parseFirstEmail(md.replyto || md.destinatario || md.email);
+          asuntoMeta = md.asunto || md.subject || md.titulo || null; // NEW
           console.log('metadata:', md, '→ destinatarioMeta:', destinatarioMeta);
         } catch (e) {
           console.warn('No se pudo leer metadata del blob:', e?.message);
@@ -309,11 +311,14 @@ router.post(
           process.env.DEFAULT_REPORT_EMAIL ||
           'nflores@neb.com.ve';
 
+           
+
         // 5) Enviar el correo con adjunto
         await enviarCorreoConAdjuntoLogged(destFile, [], {
           empresa: 'MÚLTIPLES',
           nroFactura: pedidoId ? `Pedido ${pedidoId}` : 'GLOBAL',
           destinatario,
+                asunto: asuntoMeta,  
           sourceId: evt.id,
           idempotencyKey: `eg-attach:${evt.id}`,
         });
