@@ -402,6 +402,7 @@ function revisarCorreo() {
           jobsSeed: jobsCreados.map(j => j.id), // 👈 IDs para actualizar cada job
           reuseGlobalJob: true,
           globalJobId: jobsCreados[0]?.id,
+          asunto: asunto,
         });
         console.log(`✅ Job global OK: ${pdfAdjuntos.length} PDF(s) procesado(s)`);
       } catch (e) {
