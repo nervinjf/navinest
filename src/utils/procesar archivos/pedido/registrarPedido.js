@@ -38,6 +38,112 @@ const limpiarNombreEmpresa = (nombre = "") =>
     .replace(/\s+/g, " ")
     .trim();
 
+// === Fuzzy helpers (Jaro–Winkler) ===
+const FUZZY_THRESHOLD = 0.80;   // similitud mínima aceptada
+const FUZZY_LIMIT_1   = 50;     // candidatos iniciales
+const FUZZY_LIMIT_2   = 200;    // expansión si no hay buen match
+
+function normalizeForCompare(s = "") {
+  return limpiarNombreEmpresa(String(s))
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quita acentos
+    .replace(/[^a-z0-9\s]/gi, " ")                    // quita símbolos
+    .replace(/\s+/g, " ")                             // colapsa espacios
+    .trim();
+}
+
+// Implementación Jaro-Winkler
+function jaroWinkler(a = "", b = "") {
+  a = String(a); b = String(b);
+  if (!a && !b) return 1;
+  if (!a || !b) return 0;
+
+  const md = Math.floor(Math.max(a.length, b.length) / 2) - 1;
+  const aM = new Array(a.length).fill(false);
+  const bM = new Array(b.length).fill(false);
+
+  let m = 0;
+  for (let i = 0; i < a.length; i++) {
+    const start = Math.max(0, i - md);
+    const end   = Math.min(i + md + 1, b.length);
+    for (let j = start; j < end; j++) {
+      if (bM[j] || a[i] !== b[j]) continue;
+      aM[i] = bM[j] = true;
+      m++;
+      break;
+    }
+  }
+  if (m === 0) return 0;
+
+  let t = 0, k = 0;
+  for (let i = 0; i < a.length; i++) {
+    if (!aM[i]) continue;
+    while (!bM[k]) k++;
+    if (a[i] !== b[k]) t++;
+    k++;
+  }
+  t /= 2;
+
+  const jaro = (m / a.length + m / b.length + (m - t) / m) / 3;
+
+  let l = 0;
+  while (l < Math.min(4, a.length, b.length) && a[l] === b[l]) l++;
+  const p = 0.1;
+  return jaro + l * p * (1 - jaro);
+}
+
+// Busca cliente con fallback difuso (Jaro–Winkler)
+async function findClienteByNameFuzzy(empresaRaw) {
+  // 1) intentos directos (como ya tenías)
+  const candidatoBase = empresaRaw.split(",")[0].trim();
+  const clienteNombreLimpio = limpiarNombreEmpresa(empresaRaw);
+
+  let cliente = await Clientes.findOne({
+    where: {
+      [Op.or]: [
+        { nombre: { [Op.like]: `%${empresaRaw}%` } },
+        { nombre: { [Op.like]: `%${candidatoBase}%` } },
+        { nombre: { [Op.like]: `%${clienteNombreLimpio}%` } },
+      ],
+    },
+  });
+  if (cliente) return cliente;
+
+  // 2) Fuzzy: junta candidatos por LIKE y puntúa
+  const target = normalizeForCompare(empresaRaw);
+  const tokens = target.split(" ").filter(w => w && w.length > 2);
+  const likePatterns = [
+    `%${tokens.slice(0, 3).join(" ")}%`,
+    `%${tokens.slice(0, 2).join(" ")}%`,
+    `%${tokens.join("%")}%`,
+  ].filter(Boolean);
+
+  const orLikes = likePatterns.map(p => ({ nombre: { [Op.like]: p } }));
+  let candidatos = await Clientes.findAll({
+    where: orLikes.length ? { [Op.or]: orLikes } : {},
+    attributes: ["id", "nombre"],
+    limit: FUZZY_LIMIT_1,
+  });
+
+  function bestOf(list) {
+    let best = null, bestScore = 0;
+    for (const c of list) {
+      const score = jaroWinkler(target, normalizeForCompare(c.nombre));
+      if (score > bestScore) { best = c; bestScore = score; }
+    }
+    return { best, bestScore };
+  }
+
+  let { best, bestScore } = bestOf(candidatos);
+
+  // 3) Si no alcanza el umbral, amplía el muestreo
+  if (!best || bestScore < FUZZY_THRESHOLD) {
+    const mas = await Clientes.findAll({ attributes: ["id", "nombre"], limit: FUZZY_LIMIT_2 });
+    ({ best, bestScore } = bestOf(mas));
+  }
+
+  return bestScore >= FUZZY_THRESHOLD ? best : null;
+}
+
 
 const toNumber = (v) => {
   if (v == null) return null;
@@ -59,8 +165,11 @@ async function registrarPedido({ extractedData, productosNoEncontrados, buffer, 
   if (!buffers.length) throw new Error("No se recibieron buffers de PDF.");
 
   // Datos base
-  const empresaRaw = extractedData["Empresa"]?.valueString || "Desconocido";
-  if (!empresaRaw) throw new Error("❌ No se pudo extraer el nombre del cliente desde el PDF.");
+// Por estas:
+const empresaRaw = extractedData["Empresa"]?.valueString?.trim();
+if (!empresaRaw) {
+  throw new Error("❌ No se pudo extraer el nombre del cliente desde el PDF.");
+}
 
   const clienteFolderName = normalizarNombreClienteFinal(empresaRaw);
 
@@ -84,20 +193,10 @@ async function registrarPedido({ extractedData, productosNoEncontrados, buffer, 
   await fsp.mkdir(carpetaOriginales, { recursive: true });
 
   // Buscar cliente por nombre limpio (no “%forum%” fijo)
-  const candidatoBase = empresaRaw.split(",")[0].trim(); // ej: "FORUM SUPER MAYORISTA"
-  const clienteNombreLimpio = limpiarNombreEmpresa(empresaRaw);
-  const clienteEncontrado = await Clientes.findOne({
-    where: {
-      [Op.or]: [
-        { nombre: { [Op.like]: `%${empresaRaw}%` } },   // tal cual viene
-        { nombre: { [Op.like]: `%${candidatoBase}%` } },      // antes de la coma
-        { nombre: { [Op.like]: `%${clienteNombreLimpio}%` } } // limpio
-      ]
-    }
-  });
-  if (!clienteEncontrado) {
-    throw new Error(`❌ Cliente no encontrado en la base de datos para: ${empresaRaw}`);
-  }
+const clienteEncontrado = await findClienteByNameFuzzy(empresaRaw);
+if (!clienteEncontrado) {
+  throw new Error(`❌ Cliente no encontrado en la base de datos para: ${empresaRaw} (ni con fuzzy ≥ ${FUZZY_THRESHOLD})`);
+}
 
   // Completar codigoCliente en items y asegurar cantidades numéricas
   extractedData["Items Compra"] = (extractedData["Items Compra"] || []).map(item => {
@@ -222,29 +321,6 @@ if (itemsCompra.length > 0 && productosNoEncontrados2.length === 0) {
     const prod = await Productos.findOne({ where: { codigoSAP: item.Material } });
     const productoId = prod ? prod.id : null;
 
-    function toNumberStrict(v) {
-      if (typeof v === "number") return v;
-      if (v == null) return 0;
-
-      let s = String(v).trim();
-      if (!s) return 0;
-
-      const hasComma = s.includes(",");
-      const hasDot = s.includes(".");
-
-      if (hasComma && hasDot) {
-        // el separador decimal es el último que aparezca
-        const lastComma = s.lastIndexOf(",");
-        const lastDot = s.lastIndexOf(".");
-        const decSep = lastComma > lastDot ? "," : ".";
-        const thouSep = decSep === "," ? "." : ",";
-        s = s.split(thouSep).join("").replace(decSep, ".");
-        return parseFloat(s) || 0;
-      }
-
-      if (hasComma) s = s.replace(",", ".");
-      return parseFloat(s) || 0;
-    }
 
     // intenta leer total de línea del item si viene en el PDF (Total/Monto/SubTotal...)
     // si no existe, déjalo en null (luego puedes calcularlo externamente)
@@ -280,7 +356,7 @@ if (itemsCompra.length > 0 && productosNoEncontrados2.length === 0) {
 
     await DetallePedidos.create({
       pedidoId: pedido.id,
-      cantidad: toNumberStrict(item.Cantidad),
+      cantidad: toNumber(item.Cantidad),
       productoId: productoId ?? 2555, // tu fallback
       observacionConversion: productoId ? null :
         `No encontrado (durante detalle): ${item.Description || ""} (${item.Material || ""})`,
@@ -385,3 +461,4 @@ await pedido.update({
 }
 
 module.exports = { registrarPedido };
+
