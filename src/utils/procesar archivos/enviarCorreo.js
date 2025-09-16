@@ -130,13 +130,12 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
-    // to: ensureEmail("Mirleny.Munoz@VE.nestle.com"),
-    to: ensureEmail("nflores@neb.com.ve"),
-    // cc: [
-      // ensureEmail(destinatario),
-      // ensureEmail("Katherine.Domingos1@ve.nestle.com"),
-      // ensureEmail("nflores@neb.com.ve")
-    // ],
+    to: ensureEmail("Mirleny.Munoz@VE.nestle.com"),
+    cc: [
+      ensureEmail(destinatario),
+      ensureEmail("Katherine.Domingos1@ve.nestle.com"),
+      ensureEmail("nflores@neb.com.ve")
+    ],
     subject: `Pedido procesado - ${subject}`,
     text: cuerpoCorreo,
     attachments,
