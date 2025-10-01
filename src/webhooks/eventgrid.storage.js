@@ -271,19 +271,44 @@ router.post(
         console.log('BlobCreated recibido:', { container, blobName, url: urlFromEvent, pedidoId });
 
                  function parseReplytoCombo(str = "") {
-          if (!str) return { email: null, asunto: null, sha256: null };
-          // email
-          const emailMatch = str.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-          const email = emailMatch ? emailMatch[0] : null;
+  if (!str) return { email: null, asunto: null, sha256: null, kv: {} };
 
-          // pares k=v (asunto=..., sha256=...)
-          const kv = {};
-          for (const part of str.split(/\s+/)) {
-            const [k, v] = part.split("=");
-            if (k && v) kv[k.toLowerCase()] = decodeURIComponent(v.trim());
-          }
-          return { email, asunto: kv.asunto || null, sha256: kv.sha256 || null };
-        }
+  // 1) Email
+  const emailMatch = str.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+  const email = emailMatch ? emailMatch[0] : null;
+
+  // 2) Resto (sin el email)
+  let rest = email ? str.replace(email, "").trim() : str.trim();
+  const out = { email, asunto: null, sha256: null, kv: {} };
+
+  // 3) Tokeniza por posiciones de "<clave>="
+  //    Ej: "asunto=PEDIDOS FORUM 30.09 sha256=abc123"
+  const re = /(\w+)=/g;
+  const tokens = [];
+  let m;
+  while ((m = re.exec(rest)) !== null) {
+    tokens.push({
+      key: m[1].toLowerCase(),
+      keyStart: m.index,
+      valStart: m.index + m[0].length, // justo después de "clave="
+    });
+  }
+
+  // 4) Slices entre este "clave=" y el próximo "clave="
+  for (let i = 0; i < tokens.length; i++) {
+    const { key, valStart } = tokens[i];
+    const end = i + 1 < tokens.length ? tokens[i + 1].keyStart : rest.length;
+    let raw = rest.slice(valStart, end).trim();
+    // Quita comillas envolventes si vinieran
+    raw = raw.replace(/^['"]|['"]$/g, "");
+    try { raw = decodeURIComponent(raw); } catch {}
+    out.kv[key] = raw;
+    if (key === "asunto") out.asunto = raw;
+    if (key === "sha256") out.sha256 = raw;
+  }
+
+  return out;
+}
 
         // 1) Leer metadata para el destinatario
         // 1) Leer metadata para el destinatario
