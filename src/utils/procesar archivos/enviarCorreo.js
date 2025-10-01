@@ -201,14 +201,18 @@ if (desti.toLowerCase() === "Katherine.Domingos1@ve.nestle.com".toLowerCase()) {
   // Si el destinatario es Katherine → no la repitas en cc
   cc = [
     ensureEmail("Katherine.Domingos1@ve.nestle.com"),
-    ensureEmail("nflores@neb.com.ve")
+    ensureEmail("nflores@neb.com.ve"),
+    ensureEmail("daura.gonzalez1@ve.nestle.com"),
+    ensureEmail("andrea.rojas1@ve.nestle.com")
   ];
 } else {
   // Si el destinatario es otro → incluye también a Katherine
   cc = [
     desti,
     ensureEmail("Katherine.Domingos1@ve.nestle.com"),
-    ensureEmail("nflores@neb.com.ve")
+    ensureEmail("nflores@neb.com.ve"),
+    ensureEmail("daura.gonzalez1@ve.nestle.com"),
+    ensureEmail("andrea.rojas1@ve.nestle.com")
   ];
 }
 
