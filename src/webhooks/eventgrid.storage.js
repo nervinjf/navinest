@@ -270,14 +270,34 @@ router.post(
         const pedidoId = extractPedidoId(blobName);
         console.log('BlobCreated recibido:', { container, blobName, url: urlFromEvent, pedidoId });
 
+                 function parseReplytoCombo(str = "") {
+          if (!str) return { email: null, asunto: null, sha256: null };
+          // email
+          const emailMatch = str.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+          const email = emailMatch ? emailMatch[0] : null;
+
+          // pares k=v (asunto=..., sha256=...)
+          const kv = {};
+          for (const part of str.split(/\s+/)) {
+            const [k, v] = part.split("=");
+            if (k && v) kv[k.toLowerCase()] = decodeURIComponent(v.trim());
+          }
+          return { email, asunto: kv.asunto || null, sha256: kv.sha256 || null };
+        }
+
+        // 1) Leer metadata para el destinatario
         // 1) Leer metadata para el destinatario
         let destinatarioMeta = null;
-         let asuntoMeta = null;
+        let asuntoMeta = null;
         try {
           const props = await getBlobProps(container, blobName);
           const md = props?.metadata || {};
-          destinatarioMeta = parseFirstEmail(md.replyto || md.destinatario || md.email);
-          asuntoMeta = md.asunto || md.subject || md.titulo || null; // NEW
+          const combo = parseReplytoCombo(md.replyto || "");
+          const destinatarioMeta =
+            parseFirstEmail(md.replyto || md.destinatario || md.email) ||
+            combo.email ||
+            null;
+          asuntoMeta = md.asunto || md.subject || md.titulo || combo.asunto || null;
           console.log('metadata:', md, '→ destinatarioMeta:', destinatarioMeta);
         } catch (e) {
           console.warn('No se pudo leer metadata del blob:', e?.message);
