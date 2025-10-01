@@ -50,7 +50,7 @@ function keyFaltantes({ faltantes, to, sourceId, meta }) {
 
 async function enviarCorreoConAdjuntoLogged(rutaExcel, adjuntos = [], ctx = {}) {
   const to = parseFirstEmail(ctx?.destinatario) || ensureEmailLocal(ctx?.destinatario);
-  const subject = cleanSubject(ctx?.subject || ctx?.asunto || 'Excel Global');
+  const subject = ctx?.subject || ctx?.asunto || "Excel Global"
   const meta = { tipo: "excel_global", ...ctx, archivo: path.basename(rutaExcel) };
 
   const idempotencyKey =
