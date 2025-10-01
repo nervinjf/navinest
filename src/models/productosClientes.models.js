@@ -6,7 +6,7 @@ const ProductosClientes = db.define('productos_clientes', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
   productoId: { type: DataTypes.INTEGER, allowNull: false, field: 'producto_id' },
   clienteId:  { type: DataTypes.INTEGER, allowNull: false, field: 'cliente_id' }, // usa minúscula consistente
-  codigoCliente: { type: DataTypes.STRING(255), allowNull: false, field: 'codigo_cliente' },
+  codigoCliente: { type: DataTypes.STRING(255), allowNull: true, field: 'codigo_cliente' },
   estado: { type: DataTypes.ENUM('global','activo'), allowNull: false, defaultValue: 'global' }
   },
   {
