@@ -63,6 +63,38 @@ function agruparPorFactura(input) {
   return map;
 }
 
+// function buildTextoFaltantes(productosNoEncontrados) {
+//   const grupos = agruparPorFactura(productosNoEncontrados);
+//   if (grupos.size === 0) {
+//     return "✅ Todos los productos fueron encontrados correctamente.";
+//   }
+
+//   let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
+
+//   for (const [factura, items] of grupos.entries()) {
+//     // toma la sucursal del primer item que la tenga
+//     const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
+//     txt += `\n- Pedido (${factura}) — Sucursal: ${sucursal}\n`;
+
+//     for (const it of items) {
+//       const mat  = pickMat(it);
+//       const desc = pickDesc(it);
+
+//       // estado por línea
+//       let estado = "NO ENCONTRADO";
+//       if (it?.motivo === "inactivo") {
+//         estado = `INACTIVO${it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : ""}`;
+//       } else if (it?.encontradoEnBD === true && it?.codigoSAP) {
+//         estado = `ENCONTRADO (SAP: ${it.codigoSAP})`;
+//       }
+
+//       txt += `   - ${mat} — ${desc} — ${estado}\n`;
+//     }
+//   }
+
+//   return txt.trimEnd();
+// }
+
 function buildTextoFaltantes(productosNoEncontrados) {
   const grupos = agruparPorFactura(productosNoEncontrados);
   if (grupos.size === 0) {
@@ -72,23 +104,39 @@ function buildTextoFaltantes(productosNoEncontrados) {
   let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
 
   for (const [factura, items] of grupos.entries()) {
-    // toma la sucursal del primer item que la tenga
+    // sucursal del primer item que la tenga
     const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
-    txt += `\n- Pedido (${factura}) — Sucursal: ${sucursal}\n`;
+
+    // ¿hay al menos un sin_sucursal en este pedido?
+    const tieneSinSucursal = items.some(x => x?.motivo === "sin_sucursal");
+    const bannerSinSucursal = tieneSinSucursal
+      ? "  ⚑ Atención: ninguna sucursal alcanzó el umbral para al menos una línea.\n"
+      : "";
+
+    txt += `\n- Pedido (${factura}) — Sucursal (doc): ${sucursal}\n${bannerSinSucursal}`;
 
     for (const it of items) {
-      const mat  = pickMat(it);
+      const mat = pickMat(it);
       const desc = pickDesc(it);
 
       // estado por línea
       let estado = "NO ENCONTRADO";
+
       if (it?.motivo === "inactivo") {
         estado = `INACTIVO${it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : ""}`;
+      } else if (it?.motivo === "sin_sucursal") {
+        // Detalles de la mejor sucursal intentada (si existen)
+        const best = it?.bestSucursalIntentada;
+        const bestInfo = best
+          ? ` — mejor intento: ${best.nombre ?? best.codigo ?? "N/D"} (score: ${best.score ?? "N/D"})`
+          : "";
+        const codSAP = it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : "";
+        estado = `SIN SUCURSAL${codSAP}${bestInfo}`;
       } else if (it?.encontradoEnBD === true && it?.codigoSAP) {
         estado = `ENCONTRADO (SAP: ${it.codigoSAP})`;
       }
 
-      txt += `   - ${mat} — ${desc} — ${estado}\n`;
+      txt += `  - ${mat} — ${desc} — ${estado}\n`;
     }
   }
 
