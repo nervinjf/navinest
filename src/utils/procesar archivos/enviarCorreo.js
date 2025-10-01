@@ -192,16 +192,30 @@ async function enviarCorreoConAdjunto(filePath, productosNoEncontrados = [], met
     attachments.push({ filename: path.basename(filePath), path: filePath });
   }
 
+  function uniqueEmails(arr = []) {
+  const map = new Map();
+  for (const e of arr) {
+    if (!e) continue;
+    const key = e.toLowerCase();
+    if (!map.has(key)) map.set(key, e);
+  }
+  return Array.from(map.values());
+}
+
+  const TO = ensureEmail("Mirleny.Munoz@ve.nestle.com");
+
+// candidato de cc (puede venir ya Katherine en `destinatario`)
+const ccCandidates = uniqueEmails([
+  ensureEmail(destinatario),                            // opcional
+  ensureEmail("Katherine.Domingos1@ve.nestle.com"),         // fija
+  ensureEmail("nflores@qwer.com.ve")                    // fija
+]).filter(e => e && e.toLowerCase() !== TO.toLowerCase()); // evita duplicar TO en CC
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
-    // to: ensureEmail("Mirleny.Munoz@VE.nestle.com"),
-     to: ensureEmail("nflores@neb.com.ve"),
-    // cc: [
-    //   ensureEmail(destinatario),
-    //   ensureEmail("Katherine.Domingos1@ve.nestle.com"),
-    //   ensureEmail("nflores@neb.com.ve")
-    // ],
+    to: TO,
+     // to: ensureEmail("nflores@neb.com.ve"),
+     cc: ccCandidates,
     subject: `Pedido procesado - ${subject}`,
     text: cuerpoCorreo,
     attachments,
