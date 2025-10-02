@@ -221,9 +221,9 @@ cc = Array.from(new Set(cc.map(e => e.toLowerCase())));
 
   const mailOptions = {
     from: process.env.EMAIL_USER || "dpn.navi@nebconnection.com",
-    // to: TO,
-     to: ensureEmail("nflores@neb.com.ve"),
-     // cc,
+    to: TO,
+     // to: ensureEmail("nflores@neb.com.ve"),
+     cc,
     subject: `Pedido procesado - ${subject}`,
     text: cuerpoCorreo,
     attachments,
