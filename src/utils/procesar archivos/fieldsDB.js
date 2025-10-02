@@ -315,6 +315,36 @@ function skuSimilarity(a = "", b = "") {
   return jaroWinkler(A, B);
 }
 
+// Pesos para ranking combinado (SKU + Sucursal)
+const WEIGHT_SKU = 0.7;   // peso del match por SKU
+const WEIGHT_SUC = 0.3;   // peso del match por Sucursal cuando sucuRaw venga
+
+function sucursalScore(sucursales = [], sucuRaw = "") {
+  if (!sucuRaw) return { score: 0, best: null }; // sin sucursal → no puntúa
+  const target = normSucursal(sucuRaw);
+  let best = null, bestScore = 0;
+
+  for (const s of (sucursales || [])) {
+    const cand1 = normSucursal(s?.codigo || "");
+    const cand2 = normSucursal(s?.sucursal || "");
+
+    // pequeño boost si hay LIKE directo
+    const likeBoost = (
+      (s?.codigo || "").toLowerCase().includes(sucuRaw.toLowerCase()) ||
+      (s?.sucursal || "").toLowerCase().includes(sucuRaw.toLowerCase())
+    ) ? 0.1 : 0;
+
+    const score = Math.max(
+      jaroWinkler(target, cand1),
+      jaroWinkler(target, cand2)
+    ) + likeBoost;
+
+    if (score > bestScore) { best = s; bestScore = score; }
+  }
+  return { score: Math.min(1, bestScore), best };
+}
+
+
 
 /** Helpers numéricos */
 function toNumberStrict(v) {
@@ -370,9 +400,9 @@ function pickLineTotalFromItemObject(obj) {
   return null;
 }
 
-async function findProductoPorCodigoConFuzzy(codigoInput) {
-  const tail = String(codigoInput || "").slice(-6); // semilla por últimos 6
-  // Traemos candidatos razonables
+async function findProductoPorCodigoConFuzzy(codigoInput, sucuRaw) {
+  const tail = String(codigoInput || "").slice(-6);
+
   const candidatos = await ProductosClientes.findAll({
     where: {
       [Op.or]: [
@@ -388,70 +418,105 @@ async function findProductoPorCodigoConFuzzy(codigoInput) {
         include: [{ model: Sucursales, as: "sucursales", required: false }]
       }
     ],
-    limit: 100
+    limit: 200
   });
 
   if (!candidatos.length) return null;
 
-  // Elegimos el mejor por similitud de SKU
-  let best = null, bestScore = 0;
+  let best = null;
+  let bestTotal = 0;
+  let bestSkuScore = 0;
+  let bestSucScore = 0;
+  let bestSucElegida = null;
+
   for (const c of candidatos) {
-    const score = skuSimilarity(c.codigoCliente, codigoInput);
-    if (score > bestScore) { best = c; bestScore = score; }
+    const skuScore = skuSimilarity(c.codigoCliente, codigoInput); // 0..1
+
+    let sucScore = 0, sucElegida = null;
+    if (sucuRaw) {
+      const { score, best } = sucursalScore(c?.cliente?.sucursales || [], sucuRaw);
+      sucScore = score;
+      sucElegida = best;
+    }
+
+    const total = sucuRaw
+      ? (WEIGHT_SKU * skuScore) + (WEIGHT_SUC * sucScore)
+      : skuScore;
+
+    if (total > bestTotal) {
+      best = c;
+      bestTotal = total;
+      bestSkuScore = skuScore;
+      bestSucScore = sucScore;
+      bestSucElegida = sucElegida;
+    }
   }
 
-  if (best && bestScore >= SKU_FUZZY_THRESHOLD) {
-    return { match: best, score: bestScore, via: "sku_fuzzy" };
+  if (!best) return null;
+
+  // Valida umbral mínimo de SKU
+  if (bestSkuScore < SKU_FUZZY_THRESHOLD) return null;
+
+  if (!sucuRaw) {
+    return { match: best, score: bestSkuScore, via: "sku_fuzzy+no_sucursal_pdf" };
   }
-  return null;
+
+  // con sucursal: ¿superó umbral de sucursal?
+  if (bestSucScore >= SUCURSAL_FUZZY_THRESHOLD) {
+    return {
+      match: best,
+      score: bestSkuScore,
+      sucursalElegida: bestSucElegida,
+      sucursalScore: Number(bestSucScore.toFixed(4)),
+      via: "sku_fuzzy+succ_fuzzy"
+    };
+  }
+
+  // No alcanzó el umbral de sucursal (pero SKU sí)
+  return {
+    base: best,
+    best: bestSucElegida,
+    score: Number(bestSucScore.toFixed(4)),
+    via: "sku_fuzzy+succ_none",
+    tipo: "sin_sucursal"
+  };
 }
+
 
 /** Busca vínculo cliente-producto + joins habituales */
 async function obtenerCodigoDesdeDB(codigo, sucuRaw) {
   try {
     const sucu = (sucuRaw || "").trim();
 
-    // 0) Elegimos el vínculo por SKU (LIKE/fuzzy ≥ 0.90)
-    const skuRes = await findProductoPorCodigoConFuzzy(codigo);
-    if (!skuRes) return null;
-    const base = skuRes.match;
+    // Finder ya rankea por SKU+Sucursal si sucu existe
+    const res = await findProductoPorCodigoConFuzzy(codigo, sucu);
+    if (!res) return null;
 
-    // 👉 Si NO hay sucursal en el PDF, no intentes LIKE/FUZZY de sucursal
     if (!sucu) {
-      return { tipo: "ok", match: base, via: skuRes.via + "+no_sucursal_pdf" };
+      // no hay sucursal en PDF
+      return { tipo: "ok", match: res.match, via: res.via || "sku_fuzzy+no_sucursal_pdf" };
     }
 
-    // 1) LIKE por sucursal (solo si sucu tiene contenido)
-    const tieneLike = (base?.cliente?.sucursales || []).find(s =>
-      (s?.codigo || "").toLowerCase().includes(sucu.toLowerCase()) ||
-      (s?.sucursal || "").toLowerCase().includes(sucu.toLowerCase())
-    );
-    if (tieneLike) {
-      return { tipo: "ok", match: base, via: skuRes.via + "+like" };
+    if (res.tipo === "sin_sucursal") {
+      // SKU ok, pero sucursal < threshold
+      return res; // { tipo:"sin_sucursal", base, best, score, via }
     }
 
-    // 2) Fuzzy sucursal (≥ 0.80)
-    const target = normSucursal(sucu);
-    let best = null, bestScore = 0;
-    for (const s of (base?.cliente?.sucursales || [])) {
-      const cand1 = normSucursal(s?.codigo || "");
-      const cand2 = normSucursal(s?.sucursal || "");
-      const score = Math.max(jaroWinkler(target, cand1), jaroWinkler(target, cand2));
-      if (score > bestScore) { best = s; bestScore = score; }
-    }
-
-    if (best && bestScore >= SUCURSAL_FUZZY_THRESHOLD) {
-      return { tipo: "ok_fuzzy", match: base, sucursalElegida: best, score: bestScore, via: skuRes.via + "+fuzzy" };
-    }
-
-    // 3) No alcanzó el umbral
-    return { tipo: "sin_sucursal", base, best, score: bestScore, via: skuRes.via + "+none" };
+    // Hay sucursal y superó el umbral
+    return {
+      tipo: "ok_fuzzy",
+      match: res.match,
+      sucursalElegida: res.sucursalElegida || null,
+      score: res.sucursalScore ?? null,
+      via: res.via || "sku_fuzzy+succ_fuzzy"
+    };
 
   } catch (e) {
     console.error(e);
     return null;
   }
 }
+
 
 
 function aplicarConversionYAdvertir({
