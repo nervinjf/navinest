@@ -664,7 +664,7 @@ async function extractFields(fields) {
             const vinculo = resVinculo.match;
 
              // Conversión + advertencia si decimal (redondeo hacia abajo)
-            let { cantidadConv, huboAjuste } = aplicarConversionYAdvertir({
+            let { cantidadConv, huboAjuste, skipLinea  } = aplicarConversionYAdvertir({
               cantidadPDF,
               vinculo,
               objectData,
@@ -708,7 +708,7 @@ if (skipLinea || cantidadConv < 1) {
             const vinculo = resVinculo.match;
             const sucEleg = resVinculo.sucursalElegida;
 
-           let { cantidadConv, huboAjuste } = aplicarConversionYAdvertir({
+           let { cantidadConv, huboAjuste, skipLinea  } = aplicarConversionYAdvertir({
               cantidadPDF,
               vinculo,
               objectData,
