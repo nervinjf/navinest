@@ -529,6 +529,7 @@ function aplicarConversionYAdvertir({
 }) {
   let cantidadConv = cantidadPDF;
   let huboAjuste = false;
+  let skipLinea = false;
 
   try {
     if (vinculo?.cliente?.requiere_conversion) {
@@ -539,9 +540,35 @@ function aplicarConversionYAdvertir({
         const cruda = Number(cantidadPDF) / Number(factor);
 
         if (Number.isFinite(cruda)) {
+          // 🚫 Si la conversión es < 1, descartar la línea (no podemos procesar 0)
+          if (cruda < 1) {
+            const entera = 0;
+            skipLinea = true;
+            huboAjuste = true;
+
+            productosNoEncontrados.push({
+              motivo: "conversion_menor_uno",
+              status: "descartado_por_conversion",
+              sucursal: sucursalDoc || "SIN_SUCURSAL",
+              encontradoEnBD: true,
+              codigoSAP: vinculo?.producto?.codigoSAP || null,
+              codigoClienteSugerido: vinculo?.codigoCliente || null,
+              numeroFactura: fields["N Factura"]?.valueString || "SIN_FACTURA",
+
+              materialOriginal: objectData.Material,
+              descripcion: objectData.Description,
+              cantidadPDF: Number(cantidadPDF),
+              factorUsado: Number(factor),
+              cantidadConvertidaOriginal: Number(cruda),
+              cantidadConvertidaEntera: entera
+            });
+
+            return { cantidadConv: entera, huboAjuste, skipLinea };
+          }
+
+          // ⚠️ Si es decimal ≥ 1 → redondeo hacia abajo y se reporta
           if (!Number.isInteger(cruda)) {
-            // ⚠️ decimal => redondeo hacia abajo y se reporta
-            const entera = Math.trunc(cruda); // cantidades positivas → mismo resultado
+            const entera = Math.trunc(cruda);
             cantidadConv = entera;
             huboAjuste = true;
 
@@ -562,14 +589,15 @@ function aplicarConversionYAdvertir({
               cantidadConvertidaEntera: Number(entera),
             });
           } else {
-            cantidadConv = cruda; // entero exacto
+            // Entero exacto ≥ 1
+            cantidadConv = cruda;
           }
         }
       }
     }
   } catch (_) { /* noop */ }
 
-  return { cantidadConv, huboAjuste };
+  return { cantidadConv, huboAjuste, skipLinea };
 }
 
 
@@ -646,6 +674,11 @@ async function extractFields(fields) {
             });
             if (huboAjuste) huboAjusteConv.flag = true;
 
+            // 🚫 Si la conversión quedó < 1, NO agregues la línea
+if (skipLinea || cantidadConv < 1) {
+  continue;
+}
+
             // Campos
             objectData.Material = vinculo.producto.codigoSAP;
             objectData.NumeroFactura = fields["N Factura"]?.valueString || "SIN_FACTURA";
@@ -684,6 +717,11 @@ async function extractFields(fields) {
               fields
             });
             if (huboAjuste) huboAjusteConv.flag = true;
+
+            // 🚫 Si la conversión quedó < 1, NO agregues la línea
+if (skipLinea || cantidadConv < 1) {
+  continue;
+}
 
             // Campos
             objectData.Material = vinculo.producto.codigoSAP;
