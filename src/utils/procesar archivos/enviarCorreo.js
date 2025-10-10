@@ -101,26 +101,29 @@ function buildTextoFaltantes(productosNoEncontrados) {
     return "✅ Todos los productos fueron encontrados correctamente.";
   }
 
-  const fmt = (v, d = 4) => (
-    Number.isFinite(Number(v)) ? Number(v).toFixed(d).replace(/\.?0+$/, "") : "N/D"
-  );
+  const fmt = (v, d = 4) =>
+    (Number.isFinite(Number(v)) ? Number(v).toFixed(d).replace(/\.?0+$/, "") : "N/D");
 
   let txt = "⚠ Productos con problemas (agrupados por pedido):\n";
 
   for (const [factura, items] of grupos.entries()) {
     const sucursal = items.find(x => x?.sucursal)?.sucursal || "SIN_SUCURSAL";
 
-    const tieneSinSucursal = items.some(x => x?.motivo === "sin_sucursal");
-    const convAjustadas   = items.filter(x => x?.motivo === "producto_mal_convertido").length;
+    const tieneSinSucursal   = items.some(x => x?.motivo === "sin_sucursal");
+    const convAjustadas      = items.filter(x => x?.motivo === "producto_mal_convertido").length;
+    const convDescartadasLT1 = items.filter(x => x?.motivo === "conversion_menor_uno").length;
 
     const bannerSinSucursal = tieneSinSucursal
       ? "  ⚑ Atención: ninguna sucursal alcanzó el umbral para al menos una línea.\n"
       : "";
-    const bannerConv = convAjustadas > 0
+    const bannerConvAjuste = convAjustadas > 0
       ? `  ⚑ Conversión ajustada en ${convAjustadas} línea(s) por cantidades decimales.\n`
       : "";
+    const bannerConvLT1 = convDescartadasLT1 > 0
+      ? `  ⚑ ${convDescartadasLT1} línea(s) descartada(s) por conversión < 1.\n`
+      : "";
 
-    txt += `\n- Pedido (${factura}) — Sucursal (doc): ${sucursal}\n${bannerSinSucursal}${bannerConv}`;
+    txt += `\n- Pedido (${factura}) — Sucursal (doc): ${sucursal}\n${bannerSinSucursal}${bannerConvAjuste}${bannerConvLT1}`;
 
     for (const it of items) {
       const mat  = (typeof pickMat === "function"  ? pickMat(it)  : (it.materialOriginal || it.material || it.codigoSAP || "N/D"));
@@ -140,13 +143,20 @@ function buildTextoFaltantes(productosNoEncontrados) {
         estado = `SIN SUCURSAL${codSAP}${bestInfo}`;
 
       } else if (it?.motivo === "producto_mal_convertido") {
-        // 👇 Mensaje específico de conversión decimal
-        // Ej: PDF=25 / factor=12 = 2.0833 → 2 (redondeado hacia abajo)
+        // PDF=25 / factor=12 = 2.0833 → 2 (redondeado)
         const detalle =
           `PDF=${fmt(it.cantidadPDF, 4)} / factor=${fmt(it.factorUsado, 4)} = ` +
           `${fmt(it.cantidadConvertidaOriginal, 6)} → ${fmt(it.cantidadConvertidaEntera, 0)} (redondeado)`;
         const codSAP = it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : "";
         estado = `CONVERSIÓN AJUSTADA${codSAP} — ${detalle}`;
+
+      } else if (it?.motivo === "conversion_menor_uno") {
+        // PDF=6 / factor=12 = 0.5 → 0 (descartado)
+        const detalle =
+          `PDF=${fmt(it.cantidadPDF, 4)} / factor=${fmt(it.factorUsado, 4)} = ` +
+          `${fmt(it.cantidadConvertidaOriginal, 6)} → ${fmt(it.cantidadConvertidaEntera, 0)} (descartado)`;
+        const codSAP = it?.codigoSAP ? ` (SAP: ${it.codigoSAP})` : "";
+        estado = `CONVERSIÓN < 1${codSAP} — ${detalle}`;
 
       } else if (it?.encontradoEnBD === true && it?.codigoSAP) {
         estado = `ENCONTRADO (SAP: ${it.codigoSAP})`;
@@ -158,6 +168,7 @@ function buildTextoFaltantes(productosNoEncontrados) {
 
   return txt.trimEnd();
 }
+
 
 
 
